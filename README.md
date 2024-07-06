@@ -26,7 +26,7 @@ npm i
 node app
 ```
 
-
+```
 my-react-app/
 ├── node_modules/
 ├── public/
@@ -44,6 +44,7 @@ my-react-app/
 ├── package.json
 ├── README.md
 └── ...
+```
 
 ```sh
 Backeknd API
