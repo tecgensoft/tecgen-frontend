@@ -1,14 +1,54 @@
-// import { configureStore } from "@reduxjs/toolkit";
-// import { api } from "./api/apiSlice";
-// import rootReducer from "./rootReducer";
+import { EnhancedStore, StoreEnhancer, ThunkDispatch, Tuple, UnknownAction, configureStore } from "@reduxjs/toolkit"
+import { getUserData } from "../utility/getUser"
+import { IInitialState } from "./feature/auth/authAction"
+import { CombinedState } from "@reduxjs/toolkit/query"
+import { api } from "./api/apiSlice"
+import authReducer from "../redux/feature/auth/authAction"
 
-// const store = configureStore({
-//   reducer: rootReducer,
-//   devTools: false,
-//   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),
-// });
+const token = localStorage.getItem('token')
 
-// export type RootState = ReturnType<typeof store.getState>;
-// export type AppDispatch = typeof store.dispatch;
+const initialState: IInitialState = {
+  loading: false,
+  userInfo: getUserData(token),
+  userToken: token,
+  error: null,
+  success: false,
+}
 
-// export default store;
+const store: EnhancedStore<
+  {
+    api: CombinedState<{}, never, 'api'>
+    auth: IInitialState
+  },
+  UnknownAction,
+  Tuple<
+    [
+      StoreEnhancer<{
+        dispatch: ThunkDispatch<
+          {
+            api: CombinedState<{}, never, 'api'>
+            auth: IInitialState
+          },
+          undefined,
+          UnknownAction
+        >
+      }>,
+      StoreEnhancer,
+    ]
+  >
+> = configureStore({
+  reducer: {
+    [api.reducerPath]: api.reducer,
+    auth: authReducer,
+  },
+  preloadedState: {
+    auth: initialState,
+  },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(api.middleware),
+})
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+
+export default store
