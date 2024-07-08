@@ -24,6 +24,7 @@ export default function Header() {
               src={logo}
               alt="Tecgen"
               onClick={() => navigation("/")}
+              className="cursor-pointer"
             />
           </div>
           {/* Search */}

@@ -8,7 +8,7 @@ export default function User() {
         <div className='leading-none'>
             <h4 className='text-black-dim leading-none font-medium'>Account</h4>
             <span className='text-xs leading-none'>
-                <Link to={"#"} className='text-black-dim font-medium underline'>Register</Link> or <Link to={"#"} className='text-black-dim font-medium underline' >Login</Link>
+                <Link to={"/auth/register"} className='text-black-dim font-medium underline'>Register</Link> or <Link to={"/auth/login"} className='text-black-dim font-medium underline' >Login</Link>
             </span>
         </div>
     </div>

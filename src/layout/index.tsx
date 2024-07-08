@@ -10,6 +10,5 @@ export default function Layout() {
                 <Outlet />
             </main>
         </React.Fragment>
-
-    )
+    );
 }
