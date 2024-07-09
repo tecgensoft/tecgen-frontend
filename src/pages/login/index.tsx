@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-
+    const navigate = useNavigate()
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         // Handle form submission logic here
@@ -56,6 +57,19 @@ export default function Login() {
                         >
                             Login
                         </button>
+                        <div className=''>
+                            <p className='text-center my-3'>Don't have an account?</p>
+                            {/* <Link to={'/auth/register'} className='text-orange-400 underline'>Signup</Link> */}
+                            <button
+                            className="w-full px-4 py-2 font-bold text-white bg-link rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#fa4774]"
+                            onClick={(e) => {
+                                e.preventDefault()
+                                navigate('/auth/register')
+                            }}
+                        >
+                            Create your account
+                        </button>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -8,6 +8,7 @@ import NoInternetConnection from "../components/error/NoInternetConnection";
 import Home from "../pages/home";
 import Login from "../pages/login";
 import NotFound from "../pages/notFound";
+import Signup from "../pages/signup";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -28,12 +29,12 @@ const routes = createBrowserRouter([
         // element: <Campaign />,
       },
       {
-        path: "/auth/signup",
-        // element: (
-        //   <Aunthenticate>
-        //     <Signup />
-        //   </Aunthenticate>
-        // ),
+        path: "/auth/register",
+        element: (
+          // <Aunthenticate>
+            <Signup />
+          // </Aunthenticate>
+        ),
       },
       {
         path: "/auth/login",
