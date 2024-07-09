@@ -2,6 +2,8 @@ import { FaFacebookF, FaRegPaperPlane, FaTwitter } from "react-icons/fa6";
 import { FiSearch } from "react-icons/fi";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
 import logo from "../../assets/logo.png";
+import payment_system from "../../assets/payment_system.jpg";
+import Image from "../shared/Image";
 export default function Footer() {
     return (
         <footer>
@@ -190,6 +192,12 @@ export default function Footer() {
                             </ul>
                         </div>
                     </div>
+                </div>
+            </section>
+            <section className="bg-[#EAEAEA] py-2">
+                <div className="container flex items-center justify-between">
+                    <h5>&#169; <span className="font-bold text-black-dim">Tecgen</span> - All Rights Reserve</h5>
+                    <Image src={payment_system} alt="Payment" />
                 </div>
             </section>
         </footer>
