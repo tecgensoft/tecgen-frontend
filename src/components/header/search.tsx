@@ -3,8 +3,7 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable @typescript-eslint/no-redeclare */
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
+
 /* eslint-disable react-hooks/rules-of-hooks */
 // SearchBar.tsx
 import React, { FC, useEffect, useRef, useState } from "react";
@@ -130,7 +129,7 @@ const Search: FC = () => {
         />
         <div
           onClick={handleSearch}
-          className="absolute top-0 right-0  bg-primary  w-12 h-full flex items-center justify-center"
+          className="absolute top-0 right-0  bg-primary  w-20 h-full flex items-center justify-center"
         >
           <FiSearch className="text-xl font-bold text-white" />
         </div>

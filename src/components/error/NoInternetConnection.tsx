@@ -1,13 +1,12 @@
-/* eslint-disable react/destructuring-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import networkError from "../../assets/networkError.png";
 
 import Button from "../shared/Button";
 import Image from "../shared/Image";
 
-const NoInternetConnection = (props: { children: any }) => {
+const NoInternetConnection = (props: { children: React.ReactNode }) => {
   // state variable holds the state of the internet connection
   const [isOnline, setOnline] = useState(true);
   const navigate = useNavigate();

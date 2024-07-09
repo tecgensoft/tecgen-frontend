@@ -37,7 +37,7 @@ export default {
         secondary: "#EE485C",
         gray: "#707978",
         light: "#F9F9F9",
-
+        lightGray:"#F8F8F8",
         "black-dim": "#23282d",
         "black-dark": "#A9AEB4",
         "black-light": "#7E7E7E",

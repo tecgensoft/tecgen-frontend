@@ -4,6 +4,7 @@ import notFound from "../../assets/not_found.png";
 import Header from "../../components/header/Header";
 import Button from "../../components/shared/Button";
 import Image from "../../components/shared/Image";
+import Footer from "../../components/footer";
 
 
 
@@ -32,7 +33,7 @@ const NotFound = () => {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
