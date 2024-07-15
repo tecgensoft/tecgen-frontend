@@ -1,0 +1,36 @@
+.slick-slide div {
+    outline: none;
+}
+
+.hero>.slick-slide div:focus {
+    outline: none;
+}
+
+
+.slick-dots {
+    @apply flex space-x-1;
+    bottom: 32px;
+    left: 80px;
+}
+
+.slick-dots li {
+    width: auto;
+    margin: 0 5px;
+}
+
+.slick-dots li.slick-active div {
+    background-color: #FBD702;
+    width: 30px;
+}
+
+.slick-dots li div {
+    background-color: #BCBCBC;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.slick-dots li div:hover {
+    background-color: #FBD702;
+}

@@ -1,0 +1,506 @@
+{
+    "products": [
+        {
+            "slug": "example-product",
+            "name": "Example Product",
+            "price": 29.99,
+            "discount_price": 19.99,
+            "images": []
+        },
+        {
+            "slug": "example-product",
+            "name": "Example Product",
+            "price": 29.99,
+            "discount_price": 19.99,
+            "images": []
+        }
+    ],
+    "categories": [
+        {
+            "name": "Electronics",
+            "slug": "electronics",
+            "ordering": 1,
+            "categories": [
+                {
+                    "name": "Printer",
+                    "slug": "printer",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/a47768b9dedb46e9a1c4de4a4ea919d7-image.jpg",
+                    "subcategories": [
+                        {
+                            "name": "Wifi printer",
+                            "slug": "wifi-printer",
+                            "logo": null,
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                },
+                {
+                    "name": "In-Ear Headphones",
+                    "slug": "in-ear-headphones",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/8cf47b7bc33c4ecd93da4c181a40aefc-image.png",
+                    "subcategories": [
+                        {
+                            "name": "Apple Airpods",
+                            "slug": "apple",
+                            "logo": null,
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                },
+                {
+                    "name": "Camera",
+                    "slug": "camera",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/641402ba081a426dbbb2700977072d76-image.png",
+                    "subcategories": [
+                        {
+                            "name": "DSLR",
+                            "slug": "dslr",
+                            "logo": null,
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                },
+                {
+                    "name": "Television",
+                    "slug": "television",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/4d7c1faf17f4496188c85ebb1c76a3f1-image.jpg",
+                    "subcategories": [
+                        {
+                            "name": "Smart TV",
+                            "slug": "smart-tv",
+                            "logo": null,
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                },
+                {
+                    "name": "Mouse",
+                    "slug": "mouse",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/834d5116143540c0be5c671c772e8472-image.png",
+                    "subcategories": [
+                        {
+                            "name": "Gaming",
+                            "slug": "gaming",
+                            "logo": null,
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                }
+            ],
+            "translation": {},
+            "icon": "https://d2zr04sdvfux2y.cloudfront.net/test/4dd82b8030f743b4830cc30dd1f798c1-image.png",
+            "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/c3125b862bac4d138812dddfc26d506d-image.svg"
+        },
+        {
+            "name": "Computers",
+            "slug": "computer",
+            "ordering": 1,
+            "categories": [
+                {
+                    "name": "Keyboard",
+                    "slug": "keyboard",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/e4ee0f011b2349948c0494dd97b5d627-image.jpeg",
+                    "subcategories": [
+                        {
+                            "name": "Wireless Keyboard",
+                            "slug": "wireless-keyboard",
+                            "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/8f908d0248d543d4888c7f9428bc41b4-image.jpeg",
+                            "translation": {
+                                "id": "okk"
+                            }
+                        }
+                    ],
+                    "translation": {}
+                },
+                {
+                    "name": "Computer",
+                    "slug": "computer",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/36a0811ed9c942f29b9f5599d5fca309-image.jpg",
+                    "subcategories": [
+                        {
+                            "name": "Laptop",
+                            "slug": "laptop",
+                            "logo": null,
+                            "translation": {}
+                        },
+                        {
+                            "name": "desktop",
+                            "slug": "desktop",
+                            "logo": null,
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                }
+            ],
+            "translation": {},
+            "icon": "https://d2zr04sdvfux2y.cloudfront.net/test/e8f87f1dc92a42da9d0fcca6379c3cb3-image.png",
+            "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/01854cbeaa124bca9b378a032b37f5f4-image.svg"
+        },
+        {
+            "name": "Mobile",
+            "slug": "chemical",
+            "ordering": 2,
+            "categories": [
+                {
+                    "name": "Smartphone",
+                    "slug": "smartphone",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/da491982f3b04796b6baebd587820dc7-image.jpg",
+                    "subcategories": [
+                        {
+                            "name": "Nokia",
+                            "slug": "smartphone",
+                            "logo": null,
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                },
+                {
+                    "name": "Feature Phone",
+                    "slug": "feature-phone",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/ba423526eb914e82b925bb7df0d28602-image.jpg",
+                    "subcategories": [
+                        {
+                            "name": "Nokia",
+                            "slug": "feature-phone",
+                            "logo": null,
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                }
+            ],
+            "translation": {},
+            "icon": "https://d2zr04sdvfux2y.cloudfront.net/test/f34ba36933ef4b339f39d7257b6c505d-image.png",
+            "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/3d04c87ff34b4ed1a9967f0fd6475ba4-image.svg"
+        },
+        {
+            "name": "Fashion",
+            "slug": "fashion",
+            "ordering": 3,
+            "categories": [
+                {
+                    "name": "Kids",
+                    "slug": "kids",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/22bc329a2b3345d19c82f18e0dbba0cc-image.svg",
+                    "subcategories": [
+                        {
+                            "name": "Kid's Backpack",
+                            "slug": "kid-s-backpack",
+                            "logo": null,
+                            "translation": {}
+                        },
+                        {
+                            "name": "Kid's Pant",
+                            "slug": "kid-s-pant",
+                            "logo": null,
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                },
+                {
+                    "name": "Men",
+                    "slug": "men",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/b25bc8df40b7499eb35800d9fbc41ef6-image.svg",
+                    "subcategories": [
+                        {
+                            "name": "Men's Backpack",
+                            "slug": "men-s-backpack",
+                            "logo": null,
+                            "translation": {}
+                        },
+                        {
+                            "name": "Men's Shirt",
+                            "slug": "men-s-shirt",
+                            "logo": null,
+                            "translation": {}
+                        },
+                        {
+                            "name": "Men's T shirt",
+                            "slug": "men-s-t-shirt",
+                            "logo": null,
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                },
+                {
+                    "name": "Women",
+                    "slug": "women",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/2a025e49d4404c27b5197cbe134ca798-image.svg",
+                    "subcategories": [
+                        {
+                            "name": "Women's bag",
+                            "slug": "women-s-bag",
+                            "logo": null,
+                            "translation": {}
+                        },
+                        {
+                            "name": "Sharee",
+                            "slug": "sharee",
+                            "logo": null,
+                            "translation": {}
+                        },
+                        {
+                            "name": "Women's Backpack",
+                            "slug": "women-s-backpack",
+                            "logo": null,
+                            "translation": {}
+                        },
+                        {
+                            "name": "Women's Pant",
+                            "slug": "women-s-pant",
+                            "logo": null,
+                            "translation": {}
+                        },
+                        {
+                            "name": "Women's T shirt",
+                            "slug": "women-s-t-shirt",
+                            "logo": null,
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                },
+                {
+                    "name": "Shoe",
+                    "slug": "shoe",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/518c525cd200478686de9bec2910bded-image.png",
+                    "subcategories": [
+                        {
+                            "name": "Nike",
+                            "slug": "nike",
+                            "logo": null,
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                },
+                {
+                    "name": "Jewellery",
+                    "slug": "jewellery",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/b94cb20741304411a1931b52c6ef6f00-image.jpg",
+                    "subcategories": [
+                        {
+                            "name": "Ring",
+                            "slug": "ring",
+                            "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/f8941e7ed25646708162f8a37e6cd02d-image.jpg",
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                }
+            ],
+            "translation": {},
+            "icon": "https://d2zr04sdvfux2y.cloudfront.net/test/d5c6b99bc45b49708a4f6f040ac72d74-image.png",
+            "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/7bdc18d8855140f79bbd18f8391fec1d-image.svg"
+        },
+        {
+            "name": "Home & Living",
+            "slug": "home-living",
+            "ordering": 4,
+            "categories": [
+                {
+                    "name": "Bed",
+                    "slug": "bed",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/b45ccb91b46c4700976129d6fa7a867b-image.jpg",
+                    "subcategories": [
+                        {
+                            "name": "Single Bed",
+                            "slug": "single-bed",
+                            "logo": null,
+                            "translation": {}
+                        },
+                        {
+                            "name": "Double Bed",
+                            "slug": "double-bed",
+                            "logo": null,
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                },
+                {
+                    "name": "Kid's Room",
+                    "slug": "kid-s-room",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/1e6f57044d0a4302932af9223353da4d-image.jpg",
+                    "subcategories": [
+                        {
+                            "name": "Kid's Bunk Bed",
+                            "slug": "kid-s-bunk-bed",
+                            "logo": null,
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                },
+                {
+                    "name": "Lighting",
+                    "slug": "lighting",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/9016be4f0926457e92a14544b353cd60-image.jpg",
+                    "subcategories": [
+                        {
+                            "name": "Lamps",
+                            "slug": "lamps",
+                            "logo": null,
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                }
+            ],
+            "translation": {},
+            "icon": "https://d2zr04sdvfux2y.cloudfront.net/test/75db29035fb24cc5ad8a5cb6c77c006d-image.png",
+            "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/73c10acceb514243a7a4087ae2f58a7b-image.svg"
+        },
+        {
+            "name": "Food",
+            "slug": "food-grocery",
+            "ordering": 5,
+            "categories": [
+                {
+                    "name": "Nutrition",
+                    "slug": "nutrition",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/17ed2a7d16d8412cbe1e436fce35d908-image.jpg",
+                    "subcategories": [
+                        {
+                            "name": "Nuts",
+                            "slug": "nut",
+                            "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/390c05e14e464c9d9c81ece1118ac7dd-image.webp",
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                },
+                {
+                    "name": "Groceries",
+                    "slug": "groceries",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/b6516bf6f4204e84ac6ae56140043b9e-image.jpg",
+                    "subcategories": [
+                        {
+                            "name": "Chocolates & Candy",
+                            "slug": "chocolates-candy",
+                            "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/ecfe1b5be3364cb3a9a3f9905c4473cb-image.jpg",
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                },
+                {
+                    "name": "Fruits & Vegetables",
+                    "slug": "fresh-fruits",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/75c8a334cba244e9a04c186678b3f1f6-image.jpg",
+                    "subcategories": [
+                        {
+                            "name": "Fresh Fruits",
+                            "slug": "fresh-fruits",
+                            "logo": null,
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                },
+                {
+                    "name": "Baby's Food",
+                    "slug": "baby-nutrition",
+                    "logo": "https://i.ibb.co/jZ3qM8S/formula-1.png",
+                    "subcategories": [
+                        {
+                            "name": "Nutrition",
+                            "slug": "nutrition",
+                            "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/0bec002f85c94c76ac7dcb186e5d1248-image.webp",
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {
+                        "ok": "good"
+                    }
+                }
+            ],
+            "translation": {},
+            "icon": "https://d2zr04sdvfux2y.cloudfront.net/test/30b108ad9d754e0398a7054d2de270b6-image.png",
+            "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/2fbf5bae50314e5985938d30323eda42-image.svg"
+        },
+        {
+            "name": "Health & Beauty",
+            "slug": "health-beauty",
+            "ordering": 6,
+            "categories": [
+                {
+                    "name": "Skin Care",
+                    "slug": "skin-care",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/9b871db1912147818d8e5589d6f58620-image.png",
+                    "subcategories": [],
+                    "translation": {}
+                }
+            ],
+            "translation": {},
+            "icon": "https://d2zr04sdvfux2y.cloudfront.net/test/5988d6b5875d42bfb7d469e4255fed22-image.png",
+            "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/ec6138f4249f459aac2ee1f1a5cc8f6d-image.png"
+        },
+        {
+            "name": "Toys, kids & Babies",
+            "slug": "toys-kids-babies",
+            "ordering": 7,
+            "categories": [],
+            "translation": {},
+            "icon": "https://d2zr04sdvfux2y.cloudfront.net/test/207ca31776284550ab3c5103c92d565f-image.png",
+            "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/57f664cafb0a49eebb133edd235354f8-image.jpg"
+        },
+        {
+            "name": "Books & Stationary",
+            "slug": "clothing",
+            "ordering": 8,
+            "categories": [
+                {
+                    "name": "Craft Materials",
+                    "slug": "craft-materials",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/ea7634df7739442793cca8070d6c439d-image.jpg",
+                    "subcategories": [
+                        {
+                            "name": "Drawing Materials",
+                            "slug": "drawing-materials",
+                            "logo": null,
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                }
+            ],
+            "translation": {},
+            "icon": "https://d2zr04sdvfux2y.cloudfront.net/test/8c670e94351047d5aa110539eed80e0a-image.png",
+            "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/e4836d424ec947778333d07dabfb3b5b-image.svg"
+        },
+        {
+            "name": "Sports & Fitness",
+            "slug": "sports-fitness",
+            "ordering": 9,
+            "categories": [
+                {
+                    "name": "Exercise & fitness",
+                    "slug": "exercise-fitness",
+                    "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/f34b8a0b8d2d4544b6b2da10b8447d6b-image.jpg",
+                    "subcategories": [
+                        {
+                            "name": "Cardio Equipment",
+                            "slug": "cardio-equipment",
+                            "logo": null,
+                            "translation": {}
+                        }
+                    ],
+                    "translation": {}
+                }
+            ],
+            "translation": {},
+            "icon": "https://d2zr04sdvfux2y.cloudfront.net/test/96b9ae3f01f5416db46598ba9e86be4e-image.png",
+            "logo": "https://d2zr04sdvfux2y.cloudfront.net/test/671767f967dd47f2aff8f72651169d41-image.svg"
+        }
+    ]
+}
