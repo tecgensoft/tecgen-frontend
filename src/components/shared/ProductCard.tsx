@@ -37,8 +37,8 @@ export default function ProductCard() {
                                 ৳{selling_price}
                             </p>
                         </div>
-                        <div className="w-10 h-10 bg-slate-200 text-black-dim rounded-full flex items-center justify-center cursor-pointer">
-                            <FaCartShopping />
+                        <div className="w-10 h-10 bg-[#c9c9c9d5] rounded-full flex items-center justify-center cursor-pointer">
+                            <FaCartShopping className="text-[#f3f3f3]" />
                         </div>
                     </div>
                 </div>
