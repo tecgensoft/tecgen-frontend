@@ -17,7 +17,7 @@ export default function Header() {
         </div>
       </div>
       <div className="bg-white shadow-md">
-        <div className="container flex items-center gap-5 py-7">
+        <div className="container flex items-center py-7">
           {/* Logo */}
           <div className="w-3/12">
             <Image
@@ -42,9 +42,9 @@ export default function Header() {
               />
             </Button>
             <Link to="/cart">
-              <div className="relative group text-[24px] hover:text-[34px] duration-100  text-gray">
+              <div className="relative group text-[24px] duration-100   text-gray">
                 <div className="absolute left-5 -top-[8px]">
-                  <p className="flex h-4 w-4 items-center justify-center rounded-full bg-yellow-400 text-xsm font-semibold  text-black">
+                  <p className="flex h-4 w-4 items-center justify-center rounded-full bg-yellow text-xsm font-semibold  text-black">
                     {0}
                   </p>
                 </div>

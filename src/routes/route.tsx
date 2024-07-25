@@ -1,23 +1,23 @@
 /* eslint-disable no-return-assign */
 /* eslint-disable no-restricted-globals */
-import { ErrorBoundary } from "react-error-boundary";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import ErrorReturn from "../components/error/Error";
-import NoInternetConnection from "../components/error/NoInternetConnection";
 import Home from "../pages/home";
 import Login from "../pages/login";
 import NotFound from "../pages/notFound";
 import Signup from "../pages/signup";
+import Product from "../pages/product";
+import Cart from "../pages/cart";
 const routes = createBrowserRouter([
   {
     path: "/",
     element: (
-      <NoInternetConnection>
-        <ErrorBoundary FallbackComponent={ErrorReturn} onReset={() => (location.href = "/")}>
-          <App />
-        </ErrorBoundary>
-      </NoInternetConnection>
+      // <NoInternetConnection>
+      //   <ErrorBoundary FallbackComponent={ErrorReturn} onReset={() => (location.href = "/")}>
+      //     <App />
+      //   </ErrorBoundary>
+      // </NoInternetConnection>
+      <App />
     ),
     children: [
       {
@@ -25,8 +25,12 @@ const routes = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/campaign",
-        // element: <Campaign />,
+        path: "/product",
+        element: <Product />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/auth/register",
