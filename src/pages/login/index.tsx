@@ -1,15 +1,18 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import RequiredSpan from '../../components/shared/RequiredSpan';
 import { userLogin } from '../../redux/feature/auth/authSlice';
 
 
 interface ILoginForm {
-    email: string
+    username: string | null
+    email?: string | null
     password: string
 }
 interface ILoginFormError {
-    email: string | null
+    username: string | null
+    email?: string | null
     password: string | null
 }
 
@@ -17,14 +20,16 @@ export default function Login() {
     const dispatch = useDispatch()
     // const [error, setError] = useState('');
     const [userInfoError, setUserInfoError] = useState<ILoginFormError>({
-        email: null,
+        // email: null,
+        username: null,
         password: null,
     })
-
+    const [errors, setErrors] = useState<{ [key: string]: string }>({});
     // const [email, setEmail] = useState('');
     // const [password, setPassword] = useState('');
     const [userInfo, setUserInfo] = useState<ILoginForm>({
-        email: '',
+        // email: '',
+        username: "",
         password: '',
     })
 
@@ -34,38 +39,53 @@ export default function Login() {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         // login information store in state
         setUserInfo({ ...userInfo, [e.target.name]: e.target.value })
+
+        setErrors({
+            ...errors,
+            [e.target.id]: "",
+        });
     }
 
-    const validateForm = () => {
-        const { email, password } = userInfo
-        let emailError
-        let passwordError
-        if (email !== '' && email) {
-            emailError = !/^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/.test(
-                email,
-            )
-                ? 'Invalid e-mail address'
-                : null
-        } else {
-            emailError = 'E-mail is required.'
-        }
-        if (password !== '' && password) {
-            passwordError =
-                password.length < 1 ? 'Password must be at least 1 characters' : null
-        } else {
-            passwordError = 'Password is required.'
-        }
-        setUserInfoError({ email: emailError, password: passwordError })
+    // const validateForm = () => {
+    //     const { username, password } = userInfo
+    //     // let emailError
+    //     let usernameError
+    //     let passwordError
+    //     // if (email !== '' && email) {
+    //     //     emailError = !/^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/.test(
+    //     //         email,
+    //     //     )
+    //     //         ? 'Invalid e-mail address'
+    //     //         : null
+    //     // } else {
+    //     //     emailError = 'E-mail is required.'
+    //     // }
+    //     if (password !== '' && password) {
+    //         passwordError =
+    //             password.length < 1 ? 'Password must be at least 1 characters' : null
+    //     } else {
+    //         passwordError = 'Password is required.'
+    //     }
+    //     setUserInfoError({ email: emailError, password: passwordError })
 
-        return !emailError && !passwordError
-    }
-
+    //     return !emailError && !passwordError
+    // }
+    const validate = () => {
+        const newErrors: { [key: string]: string } = {};
+        if (!userInfo.username) newErrors.username = "Username is required";
+        if (!userInfo.password) newErrors.password = "Password is required";
+        return newErrors;
+    };
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
-        e.preventDefault()
-        if (validateForm()) {
-            dispatch(userLogin(userInfo))
+        e.preventDefault();
+        const validationErrors = validate();
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            return;
         }
+
+        dispatch(userLogin(userInfo))
 
     };
     return (
@@ -76,7 +96,7 @@ export default function Login() {
                     {/* {error && <div className="text-red-500">{error}</div>} */}
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div>
-                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                            {/* <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                                 Email
                             </label>
                             <input
@@ -85,25 +105,48 @@ export default function Login() {
                                 // value={email}
                                 name='email'
                                 onChange={handleChange}
-                                className="w-full px-3 py-2 mt-1 border border-gray rounded-md shadow-sm focus:outline-none  focus:ring-black-dim focus:border-black-dark"
+                                className="w-full px-3 py-2 mt-1 border border-black-dark rounded-md shadow-sm focus:outline-none  focus:ring-black-dim focus:border-black-dark"
                                 required
                                 placeholder='Enter your e-mail'
+                            /> */}
+                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                                Username<RequiredSpan />
+                            </label>
+                            <input
+                                type="text"
+                                id="username"
+                                // value={email}
+                                name='username'
+                                onChange={handleChange}
+                                className="w-full px-3 py-2 mt-1 border border-black-dark rounded-md shadow-sm focus:outline-none  focus:ring-black-dim focus:border-black-dark"
+                                // required
+                                placeholder='Enter your e-mail'
                             />
+                            {errors.username && (
+                                <div className="text-red-500">
+                                    {errors.username}
+                                </div>
+                            )}
                         </div>
                         <div>
                             <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                                Password
+                                Password<RequiredSpan />
                             </label>
                             <input
                                 type="password"
                                 id="password"
                                 name='password'
-                                value={password}
+                                // value={password}
                                 onChange={handleChange}
-                                className="w-full px-3 py-2 mt-1 border border-gray rounded-md shadow-sm focus:outline-none focus:ring-black-dim focus:border-black-dark"
-                                required
+                                className="w-full px-3 py-2 mt-1 border border-black-dark rounded-md shadow-sm focus:outline-none focus:ring-black-dim focus:border-black-dark"
+                                // required
                                 placeholder='Enter your password'
                             />
+                            {errors.password && (
+                                <div className="text-red-500">
+                                    {errors.password}
+                                </div>
+                            )}
                         </div>
                         <button
                             type="submit"

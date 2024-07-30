@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   BaseQueryApi,
   FetchArgs,
@@ -21,9 +22,9 @@ const baseQuery = async (
     const refreshResult = await api.dispatch(refreshAuthToken()).unwrap()
     if (refreshResult) {
       // token set in setToken
-      api.dispatch(setToken(refreshResult.access))
+      api.dispatch(setToken(refreshResult.access_token))
       // decode user and data store in setUserInfo
-      api.dispatch(setUserInfo(getUserData(refreshResult.access)))
+      api.dispatch(setUserInfo(getUserData(refreshResult.access_token)))
 
       return await fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_URL })(
         args,

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { jwtDecode } from 'jwt-decode';
 
 interface IBranch {
@@ -26,7 +27,7 @@ export interface IToken {
 
 
 
-export const getUserData = (token: string | null) => {
+export const getUserData = (token: string | null| any) => {
   if (token) {
     const userData: IToken = jwtDecode(token)
     return userData

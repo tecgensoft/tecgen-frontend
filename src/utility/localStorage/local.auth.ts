@@ -1,4 +1,5 @@
-export const setTokens = (accessToken: string, refreshToken: string) => {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export const setTokens = (accessToken: string|any, refreshToken: string|any) => {
   localStorage.setItem('token', accessToken)
   localStorage.setItem('refreshToken', refreshToken)
 }
