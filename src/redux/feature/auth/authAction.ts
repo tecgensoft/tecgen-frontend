@@ -2,8 +2,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getUserData } from "../../../utility/getUser";
 import {
-    clearTokens,
-    setTokens,
+  clearTokens,
+  setTokens,
 } from "../../../utility/localStorage/local.auth";
 import { userLogin, userSignup } from "./authSlice";
 
@@ -59,6 +59,7 @@ const authSlice = createSlice({
             state.userInfo = user;
         });
         builder.addCase(userLogin.rejected, (state, { payload }) => {
+          console.log(payload)
             state.loading = false;
             state.success = false;
             state.error = payload as string | null;

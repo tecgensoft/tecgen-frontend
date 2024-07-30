@@ -7,11 +7,10 @@ import Image from "../shared/Image";
 import TopBar from "./TopBar";
 import User from "./User";
 import Search from "./search";
-import { useAppSelector } from "../../redux/hooks";
 export default function Header() {
   const navigation = useNavigate();
-  const auth = useAppSelector(state => state.auth)
-  console.log(auth)
+  // const auth = useAppSelector(state => state.auth)
+  // console.log(auth)
   return (
     <header>
       <div className="border-b border-white-light bg-light">

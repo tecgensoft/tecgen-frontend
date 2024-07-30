@@ -78,7 +78,8 @@ export const userLogin = createAsyncThunk<
         // if response is not ok then return error message
         if (!resp.ok) {
             const data = await resp.json();
-            return rejectWithValue(`${data.message}`);
+            
+            return rejectWithValue(`${data}`);
         }
         // response is ok than return data
         const response = await resp.json();
