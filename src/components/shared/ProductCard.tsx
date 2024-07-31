@@ -1,4 +1,6 @@
+import { AiFillStar } from "react-icons/ai";
 import { FaCartShopping } from "react-icons/fa6";
+import { FiStar } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import image1 from "../../assets/image1.png";
 import Image from "./Image";
@@ -25,6 +27,16 @@ export default function ProductCard() {
                     >
                         {title}
                     </Link>
+                    <div className="flex items-center gap-2">
+                    <div className="flex items-center text-black-dim text-sm my-1">
+                        <AiFillStar />
+                        <AiFillStar />
+                        <AiFillStar />
+                        <AiFillStar />
+                        <FiStar />
+                    </div>
+                    <p className="text-xs text-gray font-medium"><span>300+</span> Sold</p>
+                    </div>
                     <span className="bg-primary text-white text-xs font-medium px-1 rounded-sm">
                         Deal Of the week
                     </span>
