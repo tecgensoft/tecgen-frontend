@@ -1,21 +1,25 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import Message from "../../components/shared/Message";
 import RequiredSpan from "../../components/shared/RequiredSpan";
 import { userSignup } from "../../redux/feature/auth/authSlice";
+import { useAppSelector } from "../../redux/hooks";
 
 export default function Signup() {
     const dispatch = useDispatch()
+    const { message, loading } = useAppSelector(state => state.auth)
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
         phone: "",
         email: "",
         password: "",
-        username:""
+        username: ""
     });
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
-    const [error, setError] = useState("");
+    // const [error, setError] = useState("");
 
     // sign up validation 
     const validate = () => {
@@ -24,6 +28,7 @@ export default function Signup() {
         if (!formData.lastName) newErrors.lastName = "Last name is required";
         if (!formData.email) newErrors.email = "Email is required";
         if (!formData.password) newErrors.password = "Password is required";
+        if (!formData.username) newErrors.username = "Username is required";
         return newErrors;
     };
 
@@ -45,14 +50,14 @@ export default function Signup() {
             setErrors(validationErrors);
             return;
         }
-        const formObj:any = {
+        const formObj: any = {
             username: formData.username,
             first_name: formData.firstName,
             last_name: formData.lastName,
             password: formData.password,
             email: formData.email
         }
-        if(formData.phone){
+        if (formData.phone) {
             formObj.contact_number = formData.phone
         }
         dispatch(userSignup(formObj))
@@ -62,13 +67,12 @@ export default function Signup() {
         // }
     };
     return (
-        <div style={{ height: "calc(100vh - 142px)" }} className="bg-light ">
+        <div className="bg-light py-10">
             <div className="container h-full flex flex-col items-center justify-center ">
                 <div className="w-5/12 px-8 py-20 space-y-6 bg-white shadow-lg rounded-lg">
                     <h2 className="text-primary text-2xl font-bold text-center">
                         Signup
                     </h2>
-                    {error && <div className="text-red-500">{error}</div>}
 
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div className="flex gap-3">
@@ -130,9 +134,9 @@ export default function Signup() {
                                 className="w-full px-3 py-2 mt-1 border border-black-dark rounded-md shadow-sm focus:outline-none focus:ring-black-dim focus:border-black-dark"
                                 placeholder="Enter your user name"
                             />
-                            {errors.firstName && (
+                            {errors.username && (
                                 <div className="text-red-500">
-                                    {errors.firstName}
+                                    {errors.username}
                                 </div>
                             )}
                         </div>
@@ -199,12 +203,13 @@ export default function Signup() {
                                 </div>
                             )}
                         </div>
+                        <Message message={message} />
+                        {/* {message && <div className="bg-rose-200 text-rose-600 py-1 text-center text-sm rounded-sm ">{message}</div>} */}
                         <button
                             type="submit"
                             className="w-full px-4 py-2 font-bold text-white bg-primary rounded-md hover:bg-[#e42052] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#fa4774]"
-                        //   disabled={loading}
+                            disabled={loading}
                         >
-                            {/* {loading ? 'Signing up...' : 'Signup'} */}
                             Signup
                         </button>
                         <div>

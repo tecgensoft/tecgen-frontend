@@ -2,8 +2,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getUserData } from "../../../utility/getUser";
 import {
-  clearTokens,
-  setTokens,
+    clearTokens,
+    setTokens,
 } from "../../../utility/localStorage/local.auth";
 import { userLogin, userSignup } from "./authSlice";
 
@@ -13,6 +13,7 @@ export interface IInitialState {
     userToken: string | null;
     error: string | null;
     success: boolean;
+    message: string|null
 }
 
 const initialState: IInitialState = {
@@ -21,6 +22,7 @@ const initialState: IInitialState = {
     userToken: null,
     error: null,
     success: false,
+    message: null
 };
 const authSlice = createSlice({
     name: "auth",
@@ -49,17 +51,19 @@ const authSlice = createSlice({
             state.success = false;
         });
         builder.addCase(userLogin.fulfilled, (state, { payload }) => {
-            // set token in local storage
-            setTokens(payload.access_token, payload.refresh_token);
-            const user = getUserData(payload.access_token);
+            let user
+            if(payload.access_token){
+                // set token in local storage
+                setTokens(payload.access_token, payload.refresh_token);
+                user = (payload.access_token);
+            }
             state.loading = false;
             state.success = true;
             state.error = null;
             state.userToken = payload.access_token;
-            state.userInfo = user;
+            state.userInfo = user || null;
         });
         builder.addCase(userLogin.rejected, (state, { payload }) => {
-          console.log(payload)
             state.loading = false;
             state.success = false;
             state.error = payload as string | null;
@@ -69,18 +73,29 @@ const authSlice = createSlice({
             state.userInfo = null;
             state.error = null;
             state.success = false;
+            state.message = null
         });
-        builder.addCase(userSignup.fulfilled, (state, { payload }) => {
-            const { access_token, refresh_token } = payload;
-            // Decode access token
-            const userData = getUserData(access_token);
-            // set token in the localStorage
-            setTokens(access_token, refresh_token);
+        builder.addCase(userSignup.fulfilled, (state, { payload }:{payload:any}) => {
 
+            const { access_token, refresh_token } = payload;            
+            // Decode access token
+            let userData
+            if(access_token){
+                userData = getUserData(access_token);
+                // set token in the localStorage
+                setTokens(access_token, refresh_token);
+            }
             state.loading = false;
             state.userInfo = userData;
             state.error = null;
             state.success = true;
+            state.message = payload.message || null
+        });
+        builder.addCase(userSignup.rejected, (state, { payload }:{payload:any}) => {
+            console.log(payload)
+            state.loading = false;
+            state.success = false;
+            state.error = payload.contact_number || null;
         });
     },
 });

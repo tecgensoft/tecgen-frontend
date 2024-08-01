@@ -1,15 +1,15 @@
 import { EnhancedStore, StoreEnhancer, ThunkDispatch, Tuple, UnknownAction, configureStore } from "@reduxjs/toolkit"
-import { getUserData } from "../utility/getUser"
-import { IInitialState } from "./feature/auth/authAction"
 import { CombinedState } from "@reduxjs/toolkit/query"
-import { api } from "./api/apiSlice"
 import authReducer from "../redux/feature/auth/authAction"
+import { getUserData } from "../utility/getUser"
+import { api } from "./api/apiSlice"
+import { IInitialState } from "./feature/auth/authAction"
 
 const token = localStorage.getItem('token')
 
 const initialState: IInitialState = {
   loading: false,
-  userInfo: getUserData(token),
+  userInfo: getUserData(token) || null,
   userToken: token,
   error: null,
   success: false,

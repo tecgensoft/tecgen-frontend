@@ -2,12 +2,13 @@
 /* eslint-disable no-restricted-globals */
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
+import Cart from "../pages/cart";
 import Home from "../pages/home";
 import Login from "../pages/login";
 import NotFound from "../pages/notFound";
-import Signup from "../pages/signup";
 import Product from "../pages/product";
-import Cart from "../pages/cart";
+import Signup from "../pages/signup";
+import Aunthenticate from "./Aunthenticate";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -35,7 +36,7 @@ const routes = createBrowserRouter([
       {
         path: "/auth/register",
         element: (
-          // <Aunthenticate>
+          <Aunthenticate>
             <Signup />
           // </Aunthenticate>
         ),
@@ -43,7 +44,7 @@ const routes = createBrowserRouter([
       {
         path: "/auth/login",
         element: (
-          // <Aunthenticate>
+          <Aunthenticate>
             <Login />
           // </Aunthenticate>
         ),

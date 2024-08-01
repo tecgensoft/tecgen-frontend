@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { clearTokens, getToken } from "../../../utility/localStorage/local.auth";
 import { logout } from "./authAction";
 
 export interface ISigningFormData {
@@ -46,12 +47,14 @@ export const userSignup = createAsyncThunk<
         // if response is not ok then return error message
         if (!resp.ok) {
             const data = await resp.json();
-            return rejectWithValue(`${data.message}`);
+            return rejectWithValue(`${data}`);
         }
         // response is ok than return data
         const response = await resp.json();
+        console.log({response})
         return response;
     } catch (error) {
+        console.log({error})
         const castedError = error as any;
         if (castedError.response && castedError.response.data?.details[0]) {
             return rejectWithValue(castedError.response.data?.details[0]);
@@ -68,7 +71,7 @@ export const userLogin = createAsyncThunk<
     { rejectValue: string }
 >("auth/login", async (formData: ISigningFormData, { rejectWithValue }) => {
     try {
-        const resp = await fetch(`${backendURL}/user/login/`, {
+        const resp = await fetch(`${backendURL}/user/signin/`, {
             method: "POST",
             body: JSON.stringify(formData),
             headers: {
@@ -78,16 +81,17 @@ export const userLogin = createAsyncThunk<
         // if response is not ok then return error message
         if (!resp.ok) {
             const data = await resp.json();
-            
-            return rejectWithValue(`${data}`);
+            // console.log(data)
+            return rejectWithValue(`${data.message}`);
         }
         // response is ok than return data
         const response = await resp.json();
         return response;
     } catch (error) {
+        console.log(error)
         const castedError = error as any;
-        if (castedError.response && castedError.response.data?.details[0]) {
-            return rejectWithValue(castedError.response.data?.details[0]);
+        if (castedError) {
+            return rejectWithValue(castedError);
         }
         return rejectWithValue(castedError.message);
     }
@@ -128,3 +132,33 @@ export const refreshAuthToken = createAsyncThunk<
     }
 });
 // < --------------------Refresh auth token (END)----------------------- >
+
+
+export const userLogout = createAsyncThunk("auth/logout", async (_, { rejectWithValue }) => {
+    try {
+        const resp = await fetch(`${backendURL}/user/logout/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${getToken("token")}`
+            },
+        });
+        // if response is not ok then return error message
+        if (!resp.ok) {
+            const data = await resp.json();
+            return rejectWithValue(`${data}`);
+        }
+        clearTokens()
+        // response is ok than return data
+        const response = await resp.json();
+        return response;
+    } catch (error) {
+        console.log(error)
+        const castedError = error as any;
+        if (castedError) {
+            return rejectWithValue(castedError);
+        }
+        return rejectWithValue(castedError);
+    }
+  });
+  

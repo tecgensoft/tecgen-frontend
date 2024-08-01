@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import Message from '../../components/shared/Message';
 import RequiredSpan from '../../components/shared/RequiredSpan';
 import { userLogin } from '../../redux/feature/auth/authSlice';
 import { useAppSelector } from '../../redux/hooks';
@@ -150,7 +151,8 @@ export default function Login() {
                                 </div>
                             )}
                         </div>
-                        {error && <div className="bg-rose-200 text-rose-600 py-2 text-center text-sm rounded-sm ">{error}</div>}
+                        <Message message={error} />
+                        {/* {error && <div className="bg-rose-200 text-rose-600 py-2 text-center text-sm rounded-sm ">{error}</div>} */}
                         <button
                             type="submit"
                             className="w-full px-4 py-2 font-bold text-white bg-primary rounded-md hover:bg-[#e42052] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#fa4774]"
