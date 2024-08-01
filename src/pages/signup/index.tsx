@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import RequiredSpan from "../../components/shared/RequiredSpan";
 import { userSignup } from "../../redux/feature/auth/authSlice";
 
 export default function Signup() {
@@ -11,6 +12,7 @@ export default function Signup() {
         phone: "",
         email: "",
         password: "",
+        username:""
     });
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
     const [error, setError] = useState("");
@@ -20,8 +22,7 @@ export default function Signup() {
         const newErrors: { [key: string]: string } = {};
         if (!formData.firstName) newErrors.firstName = "First name is required";
         if (!formData.lastName) newErrors.lastName = "Last name is required";
-        // if (!formData.phone) newErrors.phone = "Phone number is required";
-        // if (!formData.email) newErrors.email = "Email is required";
+        if (!formData.email) newErrors.email = "Email is required";
         if (!formData.password) newErrors.password = "Password is required";
         return newErrors;
     };
@@ -44,10 +45,15 @@ export default function Signup() {
             setErrors(validationErrors);
             return;
         }
-        const formObj = {
-            username: formData.firstName + formData.lastName,
+        const formObj:any = {
+            username: formData.username,
             first_name: formData.firstName,
-            password: formData.password
+            last_name: formData.lastName,
+            password: formData.password,
+            email: formData.email
+        }
+        if(formData.phone){
+            formObj.contact_number = formData.phone
         }
         dispatch(userSignup(formObj))
         // const resultAction = await dispatch(signup(formData));
@@ -71,7 +77,7 @@ export default function Signup() {
                                     htmlFor="firstName"
                                     className="block text-sm font-medium text-gray-700"
                                 >
-                                    First Name
+                                    First Name<RequiredSpan />
                                 </label>
                                 <input
                                     type="text"
@@ -92,7 +98,7 @@ export default function Signup() {
                                     htmlFor="lastName"
                                     className="block text-sm font-medium text-gray-700"
                                 >
-                                    Last Name
+                                    Last Name<RequiredSpan />
                                 </label>
                                 <input
                                     type="text"
@@ -108,6 +114,48 @@ export default function Signup() {
                                     </div>
                                 )}
                             </div>
+                        </div>
+                        <div>
+                            <label
+                                htmlFor="username"
+                                className="block text-sm font-medium text-gray-700"
+                            >
+                                Username<RequiredSpan />
+                            </label>
+                            <input
+                                type="text"
+                                id="username"
+                                value={formData.username}
+                                onChange={handleChange}
+                                className="w-full px-3 py-2 mt-1 border border-black-dark rounded-md shadow-sm focus:outline-none focus:ring-black-dim focus:border-black-dark"
+                                placeholder="Enter your user name"
+                            />
+                            {errors.firstName && (
+                                <div className="text-red-500">
+                                    {errors.firstName}
+                                </div>
+                            )}
+                        </div>
+                        <div>
+                            <label
+                                htmlFor="email"
+                                className="block text-sm font-medium text-gray-700"
+                            >
+                                Email<RequiredSpan />
+                            </label>
+                            <input
+                                type="email"
+                                id="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                className="w-full px-3 py-2 mt-1 border border-black-dark rounded-md shadow-sm focus:outline-none focus:ring-black-dim focus:border-black-dark"
+                                placeholder="Enter your email"
+                            />
+                            {errors.email && (
+                                <div className="text-red-500">
+                                    {errors.email}
+                                </div>
+                            )}
                         </div>
                         <div>
                             <label
@@ -132,31 +180,10 @@ export default function Signup() {
                         </div>
                         <div>
                             <label
-                                htmlFor="email"
-                                className="block text-sm font-medium text-gray-700"
-                            >
-                                Email
-                            </label>
-                            <input
-                                type="email"
-                                id="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                className="w-full px-3 py-2 mt-1 border border-black-dark rounded-md shadow-sm focus:outline-none focus:ring-black-dim focus:border-black-dark"
-                                placeholder="Enter your email"
-                            />
-                            {errors.email && (
-                                <div className="text-red-500">
-                                    {errors.email}
-                                </div>
-                            )}
-                        </div>
-                        <div>
-                            <label
                                 htmlFor="password"
                                 className="block text-sm font-medium text-gray-700"
                             >
-                                Password
+                                Password<RequiredSpan />
                             </label>
                             <input
                                 type="password"
@@ -175,7 +202,7 @@ export default function Signup() {
                         <button
                             type="submit"
                             className="w-full px-4 py-2 font-bold text-white bg-primary rounded-md hover:bg-[#e42052] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#fa4774]"
-                            //   disabled={loading}
+                        //   disabled={loading}
                         >
                             {/* {loading ? 'Signing up...' : 'Signup'} */}
                             Signup
