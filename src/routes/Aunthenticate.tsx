@@ -8,6 +8,7 @@ const Aunthenticate = ({ children }: { children: any }) => {
   const { pathname, state } = location;
   const { userInfo } = useAppSelector((state) => state.auth);
 
+console.log(userInfo)
   if (!userInfo) {
     return children;
   }

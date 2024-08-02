@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { clearTokens, getToken } from "../../../utility/localStorage/local.auth";
+import { getToken } from "../../../utility/localStorage/local.auth";
 import { logout } from "./authAction";
 
 export interface ISigningFormData {
@@ -16,6 +16,7 @@ export interface ISignupFormData {
     password: string;
 }
 interface IAuthResponse {
+    access: string | null;
     access_token: string;
     refresh_token: string;
 }
@@ -71,6 +72,7 @@ export const userLogin = createAsyncThunk<
     { rejectValue: string }
 >("auth/login", async (formData: ISigningFormData, { rejectWithValue }) => {
     try {
+
         const resp = await fetch(`${backendURL}/user/signin/`, {
             method: "POST",
             body: JSON.stringify(formData),
@@ -135,20 +137,22 @@ export const refreshAuthToken = createAsyncThunk<
 
 
 export const userLogout = createAsyncThunk("auth/logout", async (_, { rejectWithValue }) => {
+    // console.log(data)
     try {
         const resp = await fetch(`${backendURL}/user/logout/`, {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${getToken("token")}`
             },
+            // body: JSON.stringify({ username: data }),
         });
         // if response is not ok then return error message
         if (!resp.ok) {
             const data = await resp.json();
             return rejectWithValue(`${data}`);
         }
-        clearTokens()
+        // clearTokens()
         // response is ok than return data
         const response = await resp.json();
         return response;

@@ -2,6 +2,7 @@ import { FaUser } from 'react-icons/fa'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useMouse } from '../../hooks/useMouse'
+import { logout } from '../../redux/feature/auth/authAction'
 import { userLogout } from '../../redux/feature/auth/authSlice'
 import { useAppSelector } from '../../redux/hooks'
 import Button from '../shared/Button'
@@ -11,7 +12,11 @@ export default function User() {
   const { userInfo } = useAppSelector(state => state.auth)
   const { open, setOpen, reference } = useMouse();
   const dispatch = useDispatch()
-  console.log(open)
+  
+  const handleLogout = async () => {
+    await dispatch(userLogout())
+    dispatch(logout());
+  }
   return (
     <div ref={reference} className='flex items-center gap-2 relative'>
       <FaUser className='text-[24px] text-gray ' />
@@ -21,7 +26,7 @@ export default function User() {
           <span className='text-xs leading-none'>
             <Link to={"/auth/register"} className='text-black-dim font-medium underline'>Register</Link> or <Link to={"/auth/login"} className='text-black-dim font-medium underline' >Login</Link>
           </span> : <span className='text-xs leading-none'>
-          <Button className='text-black-dim font-medium underline' onClick={() => setOpen(!open)} >Profile</Button> or <Button className='text-black-dim font-medium underline' onClick={()=> dispatch(userLogout())} >Logout</Button>
+          <Button className='text-black-dim font-medium underline' onClick={() => setOpen(!open)} >Profile</Button> or <Button className='text-black-dim font-medium underline' onClick={handleLogout} >Logout</Button>
         </span>}
       </div>
 

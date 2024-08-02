@@ -52,21 +52,22 @@ const authSlice = createSlice({
         });
         builder.addCase(userLogin.fulfilled, (state, { payload }) => {
             let user
-            if(payload.access_token){
+            if(payload.token.access){
                 // set token in local storage
-                setTokens(payload.access_token, payload.refresh_token);
-                user = (payload.access_token);
+                setTokens(payload.token.access, payload.token.refresh);
+                user = (payload.token.access);
             }
             state.loading = false;
             state.success = true;
             state.error = null;
-            state.userToken = payload.access_token;
+            state.userToken = payload.token.access;
             state.userInfo = user || null;
         });
         builder.addCase(userLogin.rejected, (state, { payload }) => {
             state.loading = false;
             state.success = false;
             state.error = payload as string | null;
+            state.userInfo = null;
         });
         builder.addCase(userSignup.pending, (state) => {
             state.loading = true;
@@ -77,19 +78,18 @@ const authSlice = createSlice({
         });
         builder.addCase(userSignup.fulfilled, (state, { payload }:{payload:any}) => {
 
-            const { access_token, refresh_token } = payload;            
-            // Decode access token
-            let userData
-            if(access_token){
-                userData = getUserData(access_token);
-                // set token in the localStorage
-                setTokens(access_token, refresh_token);
+            const { token, message } = payload || {};
+            let userData = null;
+
+            if (token && token.access) {
+                userData = getUserData(token.access);
+                setTokens(token.access, token.refresh);
             }
             state.loading = false;
             state.userInfo = userData;
             state.error = null;
             state.success = true;
-            state.message = payload.message || null
+            state.message = message || null
         });
         builder.addCase(userSignup.rejected, (state, { payload }:{payload:any}) => {
             console.log(payload)

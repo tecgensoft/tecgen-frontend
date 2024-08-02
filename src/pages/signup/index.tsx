@@ -2,6 +2,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import Loading from "../../components/shared/Loading";
 import Message from "../../components/shared/Message";
 import RequiredSpan from "../../components/shared/RequiredSpan";
 import { userSignup } from "../../redux/feature/auth/authSlice";
@@ -68,6 +69,7 @@ export default function Signup() {
     };
     return (
         <div className="bg-light py-10">
+            <Loading/>
             <div className="container h-full flex flex-col items-center justify-center ">
                 <div className="w-5/12 px-8 py-20 space-y-6 bg-white shadow-lg rounded-lg">
                     <h2 className="text-primary text-2xl font-bold text-center">
@@ -226,7 +228,7 @@ export default function Signup() {
                         </div>
                     </form>
                 </div>
-            </div>
+            Loading</div>
         </div>
     );
 }
