@@ -4,7 +4,7 @@ const categoriesApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getCategories: builder.query({
             query: () => {
-                const categories = `categories`;
+                const categories = `/catalog/all-categories/`;
                 return categories;
             },
         }),

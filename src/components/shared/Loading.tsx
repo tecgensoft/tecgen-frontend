@@ -13,11 +13,11 @@ const Loading = ({ styles }: { styles?: string }) => {
   }, []);
   return (
     <div className={`flex justify-center items-center ${styles} fixed w-full top-0 bg-black bg-opacity-50 left-0 z-[999]`}>
-      <div className="relative h-40 w-40  rounded-full ">
-        <div className="bg-white w-20 h-20 flex items-center justify-center p-3 rounded-full">
+      <div className="relative h-40 w-40 rounded-full ">
+        <div className="bg-white w-20 h-20 flex items-center justify-center p-3 rounded-full loader ">
         <img src={loader} alt="loader" className="w-auto h-full" />
         </div>
-        <div className="loader absolute top-7 left-7 " />
+        {/* <div className="loader absolute top-7 left-7 " /> */}
       </div>
     </div>
   );

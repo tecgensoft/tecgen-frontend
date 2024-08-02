@@ -71,7 +71,7 @@ export default function FeaturedCategory() {
         <div className="container">
             <h1 className="text-2xl py-5 font-bold ">Featured Category</h1>
             <div className="grid grid-cols-7 gap-3">
-                {data.map(item => <div key={item.name} className="bg-white shadow-sm hover:shadow-md duration-300 flex flex-col items-center justify-center w-full h-32 rounded-xl gap-3 group cursor-pointer">
+                {data.map((item,index) => <div key={index} className="bg-white shadow-sm hover:shadow-md duration-300 flex flex-col items-center justify-center w-full h-32 rounded-xl gap-3 group cursor-pointer">
                     <Image src={item.icon} alt="icon" />
                     <h3 className="group-hover:text-primary font-medium text-sm">{item.name}</h3>
                 </div>)}
