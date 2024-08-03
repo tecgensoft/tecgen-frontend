@@ -70,8 +70,8 @@ export default function Signup() {
     return (
         <div className="bg-light py-10">
             
-            <div className="container h-full flex flex-col items-center justify-center ">
-                <div className="w-5/12 px-8 py-20 space-y-6 bg-white shadow-lg rounded-lg">
+            <div className="container ">
+                <div className="w-5/12 px-8 py-20 space-y-6 bg-white shadow-lg rounded-lg mx-auto">
                     <h2 className="text-primary text-2xl font-bold text-center">
                         Signup
                     </h2>
@@ -228,7 +228,7 @@ export default function Signup() {
                         </div>
                     </form>
                 </div>
-            Loading</div>
+            </div>
         </div>
     );
 }

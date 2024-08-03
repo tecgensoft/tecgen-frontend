@@ -35,14 +35,14 @@ export default function Header() {
           </div>
           {/* Wishlist, Cart, User profile */}
           <div className="w-3/12 flex items-center justify-end gap-6">
-            <Button className="relative group hover:scale-[1.02] duration-100">
+            {/* <Button className="relative group hover:scale-[1.02] duration-100">
               <AiOutlineHeart
                 className={`text-[28px]  ${location.pathname === "/profile/wishlist"
                     ? "text-primary"
                     : "text-gray"
                   } cursor-pointer hover:scale-110 duration-300`}
               />
-            </Button>
+            </Button> */}
             <Link to="/cart">
               <div className="relative group text-[24px] duration-100   text-gray">
                 <div className="absolute left-5 -top-[8px]">

@@ -15,11 +15,11 @@ const Button: FC<ButtonProps> = ({ children, type, ...props }) => {
     </button>
   );
 };
-Button.defaultProps = {
-  children: undefined,
-  className: "",
-  onClick: () => {},
-  disabled: false,
-  type: "button",
-};
+// Button.defaultProps = {
+//   children: undefined,
+//   className: "",
+//   onClick: () => {},
+//   disabled: false,
+//   type: "button",
+// };
 export default Button;

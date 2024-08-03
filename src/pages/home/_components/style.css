@@ -34,3 +34,31 @@
 .slick-dots li div:hover {
     background-color: #FBD702;
 }
+
+.categories > li > a, .categories > li > ul > li> a  {
+    font-weight: 600;
+    font-size: 16px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 14px;
+    gap: 16px;
+    color: #464951;
+}
+.categories {
+    position: relative;
+}
+.categories > li > ul {
+    position: absolute;
+    left: -99999px;
+    top: 0px;
+    width: 250px;
+    height: 400px;
+    background-color: #fff;
+    z-index: 9999;
+    border-radius: 8px;
+}
+.categories > li:hover > ul {
+    left: 260px;
+}

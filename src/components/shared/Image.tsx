@@ -33,12 +33,12 @@ const Image: React.FC<IImageProps> = (props) => {
 };
 
 // Image Default Props
-Image.defaultProps = {
-  className: undefined,
-  alt: undefined,
-  ref: undefined,
-  onMouseOver: undefined,
-  onClick: undefined,
-  onKeyDown: undefined,
-};
+// Image.defaultProps = {
+//   className: undefined,
+//   alt: undefined,
+//   ref: undefined,
+//   onMouseOver: undefined,
+//   onClick: undefined,
+//   onKeyDown: undefined,
+// };
 export default Image;
