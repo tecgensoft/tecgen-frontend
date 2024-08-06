@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { RiArrowRightSLine, RiComputerFill } from 'react-icons/ri';
-import { Link } from 'react-router-dom';
-import { useGetCategoriesQuery } from '../../../redux/feature/categories/categories';
+import { useCategories } from '../../../hooks/useCategories';
 
 export default function Categories() {
-    const { data: { results = [] } = {} } = useGetCategoriesQuery(undefined)
+    const {category} = useCategories()
+    // const { data: { results = [] } = {} } = useGetCategoriesQuery(undefined)
     // <----------Recursion function for productCategory---------->
     //   const categoryRender = (categories: (ICategoryGroupType | ICategoriesType | ISubCategoriesType)[], parentRoute = "") => {
     //     const allCategories: JSX.Element[] = [];
@@ -40,36 +39,37 @@ export default function Categories() {
 
     //     return allCategories;
     //   };
-    const isSubCategories = (category: any) => {
-        const isSubCategory = 'sub_category' in category
-        return isSubCategory
-    };
-    const categoryRender = (categories: string | any[]) => {
-        const allCategories: JSX.Element[] = [];
-        for (let index = 0; index < categories.length; index += 1) {
-            const category = categories[index]
-            const isSubCategory = isSubCategories(category);
-            allCategories.push(
-                <li key={category.id}>
-                    <Link to={'#'}>
-                        {isSubCategory &&  <RiComputerFill className='text-2xl' />}
-                        <span className='flex w-full items-center justify-between'>
-                            <p>{category?.name}</p>
-                            {isSubCategory && category?.sub_category?.length > 0 &&  <RiArrowRightSLine className='text-xl' />}
-                        </span>
-                    </Link>
-                    {categoryRender(category) && category?.sub_category?.length > 0 ? (
-                        <ul className='py-3'>{categoryRender(category?.sub_category)}</ul>
-                    ) : null}
-                </li>
-            )
-        }
-        return allCategories
-    }
+    // const isSubCategories = (category: any) => {
+    //     const isSubCategory = 'sub_category' in category
+    //     return isSubCategory
+    // };
+    // const categoryRender = (categories: string | any[]) => {
+    //     const allCategories: JSX.Element[] = [];
+    //     for (let index = 0; index < categories.length; index += 1) {
+    //         const category = categories[index]
+    //         const isSubCategory = isSubCategories(category);
+    //         allCategories.push(
+    //             <li key={category.id}>
+    //                 <Link to={'#'}>
+    //                     {isSubCategory &&  <RiComputerFill className='text-2xl' />}
+    //                     <span className='flex w-full items-center justify-between'>
+    //                         <p>{category?.name}</p>
+    //                         {isSubCategory && category?.sub_category?.length > 0 &&  <RiArrowRightSLine className='text-xl' />}
+    //                     </span>
+    //                 </Link>
+    //                 {categoryRender(category) && category?.sub_category?.length > 0 ? (
+    //                     <ul className='py-3'>{categoryRender(category?.sub_category)}</ul>
+    //                 ) : null}
+    //             </li>
+    //         )
+    //     }
+    //     return allCategories
+    // }
     return (
         <div>
             <ul className='categories py-3'>
-                {categoryRender(results)}
+                {/* {categoryRender(results)} */}
+                {category}
             </ul>
         </div>
     )

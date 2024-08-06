@@ -1,25 +1,40 @@
-import { AiOutlineHeart } from "react-icons/ai";
+import { useEffect, useState } from "react";
 import { FaCartShopping } from "react-icons/fa6";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import Button from "../shared/Button";
+import { useCategories } from "../../hooks/useCategories";
 import Image from "../shared/Image";
 import TopBar from "./TopBar";
 import User from "./User";
 import Search from "./search";
+const ignoreRoutes = ['/']
 export default function Header() {
+  const { category } = useCategories()
+  const [isShow, setIsShow] = useState(false)
   const navigation = useNavigate();
   // const auth = useAppSelector(state => state.auth)
   // console.log(auth)
+  const { pathname } = useLocation();
+  useEffect(() => {
+    const isRouteMatch = ignoreRoutes.findIndex((route) => route !== pathname);
+    if (isRouteMatch >= 0) {
+      setIsShow(false);
+    } else {
+      setIsShow(true);
+    }
+  }, [pathname]);
+
+  // console.log(isShow)
+
   return (
     <header>
-      <div className="border-b border-white-light bg-light">
+      <div className={`${isShow ? "block" : "hidden"} border-b border-white-light bg-light`}>
         <div className="container py-2">
           <TopBar />
         </div>
       </div>
-      <div className="bg-white shadow-md">
-        <div className="container flex items-center py-7">
+      <div className="bg-white shadow-md border-b border-white-light">
+        <div className={`container flex items-center ${isShow ? 'py-7' : "py-4"} `}>
           {/* Logo */}
           <div className="w-3/12">
             <Image
@@ -53,8 +68,15 @@ export default function Header() {
                 <FaCartShopping />
               </div>
             </Link>
-            <User/>
+            <User />
           </div>
+        </div>
+      </div>
+      <div className="bg-white shadow-md">
+        <div className={`container py-3`}>
+          <ul className='headerCategories'>
+            {category}
+          </ul>
         </div>
       </div>
     </header>

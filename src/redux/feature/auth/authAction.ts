@@ -13,7 +13,7 @@ export interface IInitialState {
     userToken: string | null;
     error: string | null;
     success: boolean;
-    message: string|null
+    message?: string|null
 }
 
 const initialState: IInitialState = {

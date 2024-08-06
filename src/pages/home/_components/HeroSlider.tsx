@@ -19,6 +19,7 @@ const heroData = [
 ]
 
 export default function HeroSlider() {
+    // const {data} = useGetBannersQuery(undefined)
     const settings = {
         dots: true,
         infinite: true,
@@ -37,6 +38,7 @@ export default function HeroSlider() {
             </div>
         ),
     };
+    // console.log(data)
   return (
     <div className="w-full hero">
             <Slider {...settings}>

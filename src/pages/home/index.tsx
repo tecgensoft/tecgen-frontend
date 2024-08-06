@@ -1,4 +1,3 @@
-import { useGetCategoriesQuery } from "../../redux/feature/categories/categories";
 import Campaign from "./_components/Campaign";
 import FeaturedCategory from "./_components/FeaturedCategory";
 import FeatureProducts from "./_components/FeatureProducts";

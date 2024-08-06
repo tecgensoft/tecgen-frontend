@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { EnhancedStore, StoreEnhancer, ThunkDispatch, Tuple, UnknownAction, configureStore } from "@reduxjs/toolkit"
 import { CombinedState } from "@reduxjs/toolkit/query"
 import authReducer from "../redux/feature/auth/authAction"
+import categoryReducer from "../redux/feature/categories/categoryAction"
 import { getUserData } from "../utility/getUser"
 import { api } from "./api/apiSlice"
 import { IInitialState } from "./feature/auth/authAction"
@@ -17,7 +19,8 @@ const initialState: IInitialState = {
 
 const store: EnhancedStore<
   {
-    api: CombinedState<{}, never, 'api'>
+    category: any
+    api: CombinedState<any, never, 'api'>
     auth: IInitialState
   },
   UnknownAction,
@@ -26,8 +29,9 @@ const store: EnhancedStore<
       StoreEnhancer<{
         dispatch: ThunkDispatch<
           {
-            api: CombinedState<{}, never, 'api'>
+            api: CombinedState<any, never, 'api'>
             auth: IInitialState
+            category: any
           },
           undefined,
           UnknownAction
@@ -40,6 +44,7 @@ const store: EnhancedStore<
   reducer: {
     [api.reducerPath]: api.reducer,
     auth: authReducer,
+    category: categoryReducer
   },
   preloadedState: {
     auth: initialState,
