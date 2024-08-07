@@ -7,6 +7,7 @@ import Image from "../shared/Image";
 import TopBar from "./TopBar";
 import User from "./User";
 import Search from "./search";
+import "./style.css";
 const ignoreRoutes = ['/']
 export default function Header() {
   const { category } = useCategories()
@@ -34,7 +35,7 @@ export default function Header() {
         </div>
       </div>
       <div className="bg-white shadow-md border-b border-white-light">
-        <div className={`container flex items-center ${isShow ? 'py-7' : "py-4"} `}>
+        <div className={`container flex items-center ${isShow ? 'py-7' : "py-3"} `}>
           {/* Logo */}
           <div className="w-3/12">
             <Image
@@ -72,8 +73,8 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div className="bg-white shadow-md">
-        <div className={`container py-3`}>
+      <div className={`bg-white shadow-md ${isShow ? " hidden" : "block"}`}>
+        <div className={`container`}>
           <ul className='headerCategories'>
             {category}
           </ul>
