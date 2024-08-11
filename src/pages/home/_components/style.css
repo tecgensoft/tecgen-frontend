@@ -5,19 +5,23 @@
 .hero>.slick-slide div:focus {
     outline: none;
 }
+
 .slick-dots {
     @apply flex space-x-1;
     bottom: 32px;
     left: 80px;
 }
+
 .slick-dots li {
     width: auto;
     margin: 0 5px;
 }
+
 .slick-dots li.slick-active div {
     background-color: #FBD702;
     width: 30px;
 }
+
 .slick-dots li div {
     background-color: #BCBCBC;
     width: 10px;
@@ -25,34 +29,99 @@
     border-radius: 10px;
     transition: background-color 0.3s;
 }
+
 .slick-dots li div:hover {
     background-color: #FBD702;
 }
 
-.categories > li > a, .categories > li > ul > li> a  {
+/* <----------------Category CSS----------------> */
+.categories>li>a>span,
+.categories>li>div>ul>li>a>span,
+.categories>li>div>ul>li>ul>li>a>span {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 15px;
     height: 38px;
     display: flex;
     align-items: center;
-    padding-left: 20px;
-    padding-right: 14px;
+    padding: 8px 12px 8px 16px;
     gap: 16px;
     color: #464951;
 }
-.categories {
+
+.categories{
     position: relative;
 }
-.categories > li > ul {
+
+.categories>li>div {
     position: absolute;
-    left: -99999px;
+    left: 99999px;
     top: 0px;
-    width: 250px;
+    z-index: 9999;
+}
+
+.categories>li:hover>div {
+    left: 255px;
+}
+
+.categories>li>div {
+    padding-left: 4px;
+}
+
+
+.categories>li>div>ul,
+.categories>li>div>ul>li>ul {
+    width: 220px;
+    max-width: 250px;
     height: 400px;
     background-color: #fff;
-    z-index: 9999;
     border-radius: 8px;
+    box-shadow: -3px 5px 6px -5px #33333336; 
 }
-.categories > li:hover > ul {
-    left: 260px;
+
+.categories>li>div>ul>li {
+    position: relative;
+}
+
+.categories>li>div>ul>li>ul {
+    position: absolute;
+    left: 99999px;
+    top: 0px;
+    z-index: 9999;
+    box-shadow: -3px 5px 6px -5px #33333336; 
+}
+
+.categories>li>div>ul>li:hover>ul {
+    left: 220px;
+}
+
+/* Hover styles for the main categories */
+.categories>li:hover>a>span {
+    color: #EF3B69;
+    background-color: #F8F8F8;
+}
+
+.categories>li>div>ul>li {
+    position: relative;
+}
+
+/* Hover styles for the second-level subcategories */
+.categories>li>div>ul>li:hover>a>span {
+    color: #EF3B69;
+    background-color: #F8F8F8;
+}
+
+/* Ensure parent remains highlighted when hovering over second-level subcategories */
+.categories>li>div>ul>li:hover {
+    color: #EF3B69;
+}
+
+/* Hover styles for the third-level subcategories */
+.categories>li>div>ul>li>ul>li:hover>a>span {
+    color: #EF3B69;
+    background-color: #F8F8F8;
+}
+
+/* Ensure parent remains highlighted when hovering over subcategories */
+.categories>li>div>ul>li:hover {
+    color: #EF3B69;
 }

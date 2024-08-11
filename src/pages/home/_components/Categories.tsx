@@ -67,7 +67,7 @@ export default function Categories() {
     // }
     return (
         <div>
-            <ul className='categories py-3'>
+            <ul className='categories'>
                 {/* {categoryRender(results)} */}
                 {category}
             </ul>

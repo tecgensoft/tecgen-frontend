@@ -1,48 +1,55 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { RiArrowRightSLine, RiComputerFill } from "react-icons/ri";
+import { MdKeyboardArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
+import Image from "../components/shared/Image";
 import { useAppSelector } from "../redux/hooks";
 
-
+const isCategories = (category: any) => {
+    return "sub_category" in category;
+};
+const isBrand = (category: any) => {
+    return "brand" in category;
+};
 export const useCategories = () => {
-    const  {categories} = useAppSelector(state => state.category)
-    // console.log({categories})
-    const isSubCategories = (category: any) => {
-        const isSubCategory = 'sub_category' in category
-        return isSubCategory
-    };
-    const isBrand = (category: any) => {
-        const isBrand = 'brand' in category
-        return isBrand
-    };
-    const categoryRender = (categories: string | any[]) => {
-        // console.log(categories)
+    const { categories } = useAppSelector(state => state.category)
+
+    const categoryRender = (categories: any, parentRoute = "") => {
         const allCategories: JSX.Element[] = [];
         for (let index = 0; index < categories.length; index += 1) {
             const category = categories[index]
-            const isSubCategory = isSubCategories(category);
-            const brand = isBrand(category)
-            console.log(brand)
+            const route = `${parentRoute}/${category.name}`;
+            // const isCategory = !isCategories(category) && category?.sub_category !== 1
+            // console.log()
             allCategories.push(
-                <li key={category.id}>
-                    <Link to={'#'}>
-                        {isSubCategory && <RiComputerFill className='text-2xl' />}
-                        <span className='flex w-full items-center justify-between'>
-                            <p>{category?.name}</p>
-                            {isSubCategory && category?.sub_category?.length > 0 &&  <RiArrowRightSLine className='text-xl' />}
+                <li key={index} className="capitalize">
+                    <Link to={route} className="relative">
+                        <span className="flex items-center gap-4 w-full">
+                            {isCategories(category) && category?.sub_category !== 1 && <Image src={category?.logo} className="w-[20px] h-[20px]" />}
+                            <span className="w-full flex justify-between items-center ">
+                                <p>{category?.name} </p>
+                                {category?.sub_category && category.sub_category.length > 0 ? (
+                                    <MdKeyboardArrowRight className="text-xl" />
+                                ) : null}
+                            </span>
                         </span>
                     </Link>
-                    {isSubCategories(category) && category?.sub_category?.length > 0 ? (
-                        <ul className='py-3'>{categoryRender(category?.sub_category)}</ul>
+
+                    {isCategories(category) && category?.sub_category?.length > 0 ? (
+                        <div>
+                            <ul>
+                                {categoryRender(category?.sub_category, route)}
+                            </ul>
+                        </div>
                     ) : null}
                     {isBrand(category) && category?.brand?.length > 0 ? (
-                        <ul className='py-3'>{categoryRender(category?.brand)}</ul>
+                        <ul className="hover:text-yellow">{categoryRender(category?.brand, route)}</ul>
                     ) : null}
                 </li>
-            )
+            );
         }
-        return allCategories
-    }
+
+        return allCategories;
+    };
     const category = categoryRender(categories)
     return { category }
 }
