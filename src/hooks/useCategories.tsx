@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
+import logo from "../assets/lodingIcon.png";
+import Image from "../components/shared/Image";
 import { useAppSelector } from "../redux/hooks";
-
 const isCategories = (category: any) => {
     return "sub_category" in category;
 };
@@ -12,7 +13,7 @@ const isBrand = (category: any) => {
 export const useCategories = () => {
     const { categories } = useAppSelector(state => state.category)
 
-    const categoryRender = (categories: any, parentRoute = "") => {
+    const categoryRender = (categories: any, parentRoute = "", isParent = true) => {
         const allCategories: JSX.Element[] = [];
         for (let index = 0; index < categories.length; index += 1) {
             const category = categories[index]
@@ -21,7 +22,11 @@ export const useCategories = () => {
                 <li key={index} className="capitalize">
                     <Link to={route} className="relative">
                         <span className="flex items-center gap-4 w-full">
-                            {/* {isCategories(category) && category?.sub_category === 0  && <Image src={category?.logo} className="w-[20px] h-[20px]" />} */}
+                        {isParent  && (
+                            <div  className="w-[20px] h-[20px]">
+                                <Image src={logo} className="" />
+                            </div>
+                        )}
                             <span className="w-full flex justify-between items-center ">
                                 <p>{category?.name} </p>
                                 {category?.sub_category && category.sub_category.length > 0 ? (
@@ -34,12 +39,12 @@ export const useCategories = () => {
                     {isCategories(category) && category?.sub_category?.length > 0 ? (
                         <div>
                             <ul>
-                                {categoryRender(category?.sub_category, route)}
+                                {categoryRender(category?.sub_category, route, false)}
                             </ul>
                         </div>
                     ) : null}
                     {isBrand(category) && category?.brand?.length > 0 ? (
-                        <ul className="hover:text-yellow">{categoryRender(category?.brand, route)}</ul>
+                        <ul className="hover:text-yellow">{categoryRender(category?.brand, route, false)}</ul>
                     ) : null}
                 </li>
             );
