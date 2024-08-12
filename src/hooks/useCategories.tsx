@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
-import Image from "../components/shared/Image";
 import { useAppSelector } from "../redux/hooks";
 
 const isCategories = (category: any) => {
@@ -18,13 +17,11 @@ export const useCategories = () => {
         for (let index = 0; index < categories.length; index += 1) {
             const category = categories[index]
             const route = `${parentRoute}/${category.name}`;
-            // const isCategory = !isCategories(category) && category?.sub_category !== 1
-            // console.log()
             allCategories.push(
                 <li key={index} className="capitalize">
                     <Link to={route} className="relative">
                         <span className="flex items-center gap-4 w-full">
-                            {isCategories(category) && category?.sub_category !== 1 && <Image src={category?.logo} className="w-[20px] h-[20px]" />}
+                            {/* {isCategories(category) && category?.sub_category === 0  && <Image src={category?.logo} className="w-[20px] h-[20px]" />} */}
                             <span className="w-full flex justify-between items-center ">
                                 <p>{category?.name} </p>
                                 {category?.sub_category && category.sub_category.length > 0 ? (

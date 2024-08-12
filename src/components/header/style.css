@@ -1,42 +1,99 @@
 .headerCategories {
     display: flex;
-    gap: 16px;
+    gap: 16px;    
 }
 
-.headerCategories>li>a,
-.headerCategories>li>ul>li>a {
+/* .headerCategories>li>a,
+.headerCategories>li>div>ul>li>a {
     font-weight: 600;
     font-size: 14px;
-    height: 52px;
+    height: 48px;
     display: flex;
     align-items: center;
     gap: 10px;
     color: #464951;
+} */
+
+
+/* <----------------Category CSS----------------> */
+.headerCategories{
+    height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 0px;
 }
-.headerCategories>li>a:hover{
+.headerCategories>li>a>span>span{
+    padding: 0px 12px;
+}
+.headerCategories>li>a>span>span{
+    gap: 8px;
+}
+.headerCategories>li>div>ul>li>a>span,
+.headerCategories>li>div>ul>li>ul>li>a>span {
+    font-weight: 400;
+    font-size: 15px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    padding: 8px 12px 8px 16px;
+    gap: 16px;
+    color: #464951;
+}
+
+.headerCategories>li{
+    position: relative;
+    height: 44px;
+    display: flex;
+    align-items: center;
+}
+.headerCategories>li>div, .headerCategories>li>div>ul>li>ul {
+    position: absolute;
+    top: 9999px;
+    left: 0;
+    width: 220px;
+    height: 400px;
+    max-width: 250px;
+    max-height: 400px;
+    background-color: #fff;
+    box-shadow: -3px 5px 6px -5px #33333336; 
+    padding-top: 8px;
+    border: 1px solid #f0f0f0;
+}
+.headerCategories>li:hover>div {
+    top: 44px;
+}
+
+.headerCategories>li>div>ul>li>ul{
+    left: 218px;
+}
+.headerCategories>li>div>ul>li:hover>ul{
+    top: 44px;
+}
+/* Hover styles for the main categories */
+.headerCategories>li:hover>a>span {
+    color: #EF3B69;
+    background-color: #F8F8F8;
+    height: 44px;
+}
+
+/* Hover styles for the second-level subcategories */
+.headerCategories>li>div>ul>li:hover>a>span {
+    color: #EF3B69;
+    background-color: #F8F8F8;
+}
+
+/* Ensure parent remains highlighted when hovering over second-level subcategories */
+.headerCategories>li>div>ul>li:hover {
     color: #EF3B69;
 }
 
-.headerCategories>li {
-    position: relative;
+/* Hover styles for the third-level subcategories */
+.headerCategories>li>div>ul>li>ul>li:hover>a>span {
+    color: #EF3B69;
+    background-color: #F8F8F8;
 }
 
-.headerCategories>li>ul {
-    position: absolute;
-    left: 99999px;
-    border-top: 3px solid #EF3B69;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 4px ;
-    padding-bottom: 4px;
-}
-
-.headerCategories>li:hover>ul {
-    left: 0;
-    width: 220px;
-    background-color: white;
-    top: 52px;
-    -webkit-box-shadow: 10px 10px 5px -7px #dbdbdb2e;
-    -moz-box-shadow: 10px 10px 5px -7px #dbdbdb2e;
-    box-shadow: 10px 10px 5px -7px #dbdbdb2e;
+/* Ensure parent remains highlighted when hovering over subcategories */
+.headerCategories>li>div>ul>li:hover {
+    color: #EF3B69;
 }

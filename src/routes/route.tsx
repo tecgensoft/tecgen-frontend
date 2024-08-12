@@ -38,7 +38,7 @@ const routes = createBrowserRouter([
         element: (
           <Aunthenticate>
             <Signup />
-          // </Aunthenticate>
+          </Aunthenticate>
         ),
       },
       {
@@ -46,7 +46,7 @@ const routes = createBrowserRouter([
         element: (
           <Aunthenticate>
             <Login />
-          // </Aunthenticate>
+          </Aunthenticate>
         ),
       },
       {
