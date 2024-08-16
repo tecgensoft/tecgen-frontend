@@ -21,15 +21,15 @@ export const useCategories = () => {
             allCategories.push(
                 <li key={index} className="capitalize">
                     <Link to={route} className="relative">
-                        <span className="flex items-center gap-4 w-full">
+                        <span className="flex items-center  w-full">
                         {isParent  && (
-                            <div  className="w-[20px] h-[20px]">
-                                <Image src={logo} className="" />
+                            <div  className="w-[20px] h-[20px] flex items-center p-1">
+                                <Image src={logo} className="w-auto h-auto" />
                             </div>
                         )}
                             <span className="w-full flex justify-between items-center ">
                                 <p>{category?.name} </p>
-                                {category?.sub_category && category.sub_category.length > 0 ? (
+                                {category?.sub_category && category.sub_category.length > 0 || category?.brand && category.brand.length > 0  ? (
                                     <MdKeyboardArrowRight className="text-xl" />
                                 ) : null}
                             </span>

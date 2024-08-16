@@ -1,17 +1,20 @@
 import { AiFillStar } from "react-icons/ai";
 import { BsWatch } from "react-icons/bs";
-import { FaCalendarDay, FaCartShopping, FaMapLocation } from "react-icons/fa6";
+import { CiDeliveryTruck, CiLocationOn } from "react-icons/ci";
+import { FaCalendarDay, FaCartShopping } from "react-icons/fa6";
 import { FiMinus, FiPlus, FiStar } from "react-icons/fi";
+import { GiMoneyStack } from "react-icons/gi";
 import image from "../../assets/image1.png";
 import Button from "../../components/shared/Button";
 import Image from "../../components/shared/Image";
-import { CiDeliveryTruck, CiLocationOn } from "react-icons/ci";
-import { GiMoneyStack } from "react-icons/gi";
+import { goToTop } from "../../utility/goToTop";
 export default function Product() {
     const title = "Lorem ipsum dolor, sit amet consectetur adipisicing elit.";
     const sizes = ["S", "M", "XL", "2XL", "3XL"];
     const colors = ["#ff3a3a", "#68ff3a", "#7f3aff", "#d83aff", "#ff3a7c"];
 
+
+    goToTop()
     return (
         <div>
             <div className="container py-5">

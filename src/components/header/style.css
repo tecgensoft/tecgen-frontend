@@ -1,19 +1,6 @@
 .headerCategories {
     display: flex;
-    gap: 16px;    
 }
-
-/* .headerCategories>li>a,
-.headerCategories>li>div>ul>li>a {
-    font-weight: 600;
-    font-size: 14px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #464951;
-} */
-
 
 /* <----------------Category CSS----------------> */
 .headerCategories{
@@ -22,11 +9,9 @@
     align-items: center;
     gap: 0px;
 }
+
 .headerCategories>li>a>span>span{
-    padding: 0px 12px;
-}
-.headerCategories>li>a>span>span{
-    gap: 8px;
+    gap: 4px;
 }
 .headerCategories>li>div>ul>li>a>span,
 .headerCategories>li>div>ul>li>ul>li>a>span {
@@ -36,7 +21,7 @@
     display: flex;
     align-items: center;
     padding: 8px 12px 8px 16px;
-    gap: 16px;
+    /* gap: 16px; */
     color: #464951;
 }
 
@@ -56,18 +41,27 @@
     max-height: 400px;
     background-color: #fff;
     box-shadow: -3px 5px 6px -5px #33333336; 
-    padding-top: 8px;
     border: 1px solid #f0f0f0;
+    border-top: 3px solid #EF3B69;
+}
+.headerCategories>li>div>ul>li{
+    position: relative;
 }
 .headerCategories>li:hover>div {
     top: 44px;
 }
 
-.headerCategories>li>div>ul>li>ul{
-    left: 218px;
-}
 .headerCategories>li>div>ul>li:hover>ul{
+    left: 218px;
+    top: -3px;
+}
+/* .headerCategories>li>div>ul>li:hover>ul{
     top: 44px;
+} */
+.headerCategories>li>a>span{
+    padding-left: 12px;
+    padding-right: 12px;
+    gap: 5px;
 }
 /* Hover styles for the main categories */
 .headerCategories>li:hover>a>span {

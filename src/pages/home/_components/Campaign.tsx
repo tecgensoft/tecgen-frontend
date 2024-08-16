@@ -1,8 +1,7 @@
-import React from 'react'
-import img1 from "../.././../assets/hero_5.jpeg";
-import img2 from "../.././../assets/hero_4.jpeg";
-import img3 from "../.././../assets/hero_3.jpeg";
 import Image from '../../../components/shared/Image';
+import img3 from "../.././../assets/hero_3.jpeg";
+import img2 from "../.././../assets/hero_4.jpeg";
+import img1 from "../.././../assets/hero_5.jpeg";
 
 const heroData = [
     {
@@ -21,7 +20,7 @@ const heroData = [
 
 
 export default function Campaign() {
-
+    
     return (
         <div>
             <div className='container'>

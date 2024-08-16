@@ -1,28 +1,14 @@
+import { Key } from 'react';
 import Slider from 'react-slick';
 import Image from '../../../components/shared/Image';
-import img3 from "../.././../assets/hero_3.jpeg";
-import img2 from "../.././../assets/hero_4.jpeg";
-import img1 from "../.././../assets/hero_5.jpeg";
-const heroData = [
-    {
-        id: 1,
-        img: img1,        
-    },
-    {
-        id: 2,
-        img: img2,        
-    },
-    {
-        id: 3,
-        img: img3,        
-    }
-]
+import { useGetBannersQuery } from '../../../redux/feature/home/homeSlice';
 
 export default function HeroSlider() {
-    // const {data} = useGetBannersQuery(undefined)
+    const { data, isLoading } = useGetBannersQuery(undefined)
+    
     const settings = {
         dots: true,
-        infinite: true,
+        infinite: false,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -38,17 +24,16 @@ export default function HeroSlider() {
             </div>
         ),
     };
-    // console.log(data)
-  return (
-    <div className="w-full hero">
-            <Slider {...settings}>
-                {heroData.map((item) => {
-                    return <div key={item.id} className="relative rounded-md">
-                    <Image src={item.img} alt="Watch 1"className="w-full h-[400px] object-cover  rounded-md" />
-                </div>
+
+    return (
+        <div className="w-full  hero">
+            {isLoading ? <p>Loading....</p> : <Slider {...settings}>
+                {data?.results.map((item: { id: Key | null | undefined; image: string | undefined; }) => {
+                    return <div key={item.id} className=" rounded-md w-full h-[400px]">
+                        <Image src={item?.image} alt="Watch 1" className="object-cover rounded-md w-full  h-full" />
+                    </div>
                 })}
-                {/* Add more slides as needed */}
-            </Slider>
+            </Slider>}
         </div>
-  )
+    )
 }
