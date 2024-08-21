@@ -26,12 +26,11 @@ export default function HeroSlider() {
     };
 
     return (
-        <div className="w-full  hero">
-            {isLoading ? <p>Loading....</p> : <Slider {...settings}>
-                {data?.results.map((item: { id: Key | null | undefined; image: string | undefined; }) => {
-                    return <div key={item.id} className=" rounded-md w-full h-[400px]">
-                        <Image src={item?.image} alt="Watch 1" className="object-cover rounded-md w-full  h-full" />
-                    </div>
+        <div className="w-full h-full hero">
+            {isLoading ? <p>Loading....</p> : <Slider
+            className='h-full' {...settings}>
+                {data?.results.map((item: { id: Key | null | undefined; image: string | undefined; }, index: number) => {
+                    return <Image key={index} src={item?.image} alt="Watch 1" className="object-fit rounded-md w-full  h-[350px] " />
                 })}
             </Slider>}
         </div>

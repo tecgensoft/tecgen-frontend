@@ -8,6 +8,7 @@ const productApi = api.injectEndpoints({
                 return product;
             },
         }),
+        
     }),
 });
 
