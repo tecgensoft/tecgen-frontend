@@ -23,12 +23,12 @@ export default function ProductCard() {
                 <div className="w-full h-fit px-3 pb-3">
                     <Link
                         to={`/product`}
-                        className="text-link text-base leading-5 block"
+                        className="text-black duration-200 hover:underline text-base leading-5 block"
                     >
                         {title}
                     </Link>
                     <div className="flex items-center gap-2">
-                    <div className="flex items-center text-black-dim text-sm my-1">
+                    <div className="flex items-center text-yellow text-sm my-1">
                         <AiFillStar />
                         <AiFillStar />
                         <AiFillStar />
@@ -37,7 +37,7 @@ export default function ProductCard() {
                     </div>
                     <p className="text-xs text-gray font-medium"><span>300+</span> Sold</p>
                     </div>
-                    <span className="bg-primary text-white text-xs font-medium px-1 rounded-sm">
+                    <span className="bg-secondary text-white text-xs font-medium px-1 rounded-sm">
                         Deal Of the week
                     </span>
                     <div className="flex justify-between">
@@ -49,8 +49,8 @@ export default function ProductCard() {
                                 ৳{selling_price}
                             </p>
                         </div>
-                        <div className="w-10 h-10 bg-[#c9c9c9d5] rounded-full flex items-center justify-center cursor-pointer">
-                            <FaCartShopping className="text-[#f3f3f3]" />
+                        <div className=" rounded-full flex items-center justify-center cursor-pointer">
+                            <FaCartShopping className="text-[#1d1d1d]" />
                         </div>
                     </div>
                 </div>
