@@ -8,6 +8,7 @@
     display: flex;
     align-items: center;
     gap: 0px;
+    font-size: 14px;
 }
 
 .headerCategories>li>a>span>span{
@@ -16,7 +17,7 @@
 .headerCategories>li>div>ul>li>a>span,
 .headerCategories>li>div>ul>li>ul>li>a>span {
     font-weight: 400;
-    font-size: 15px;
+    font-size: 14px;
     height: 38px;
     display: flex;
     align-items: center;
@@ -33,7 +34,7 @@
 }
 .headerCategories>li>div, .headerCategories>li>div>ul>li>ul {
     position: absolute;
-    top: 9999px;
+    bottom: 9999px;
     left: 0;
     width: 220px;
     height: 400px;

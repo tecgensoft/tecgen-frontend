@@ -4,14 +4,22 @@ import { CiDeliveryTruck, CiLocationOn } from "react-icons/ci";
 import { FaCalendarDay, FaCartShopping } from "react-icons/fa6";
 import { FiMinus, FiPlus, FiStar } from "react-icons/fi";
 import { GiMoneyStack } from "react-icons/gi";
+import { useParams } from "react-router-dom";
 import image from "../../assets/image1.png";
 import Button from "../../components/shared/Button";
 import Image from "../../components/shared/Image";
 import { goToTop } from "../../utility/goToTop";
+import { useGetProductByIdQuery } from "../../redux/feature/product/productSlice";
 export default function Product() {
+    const {productId} = useParams()
+    const params = productId?.split('=')[1]
+    useGetProductByIdQuery({id:params}, {
+        skip: !params
+    })
     const title = "Lorem ipsum dolor, sit amet consectetur adipisicing elit.";
     const sizes = ["S", "M", "XL", "2XL", "3XL"];
     const colors = ["#ff3a3a", "#68ff3a", "#7f3aff", "#d83aff", "#ff3a7c"];
+    
 
 
     goToTop()
@@ -135,11 +143,11 @@ export default function Product() {
                             </span>
 
                             <div className="w-12 h-8 bg-white">
-                                <input
+                                {/* <input
                                     type="number"
                                     value={10}
                                     className="outline-none  rounded-md w-full h-full text-center shadow-sm"
-                                />
+                                /> */}
                             </div>
                             <span className="w-8 h-8 bg-white rounded-md flex items-center justify-center text-black-dim shadow-sm">
                                 <FiPlus />

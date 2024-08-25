@@ -6,6 +6,7 @@ const homeApi = api.injectEndpoints({
             query: () => {
                 const product = `configure/banner-list`;
                 return product;
+                
             },
         }),
     }),

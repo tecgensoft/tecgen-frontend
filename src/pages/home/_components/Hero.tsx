@@ -8,7 +8,7 @@ export default function Hero() {
     return (
         <section>
             <div className='container flex gap-4 py-5'>
-                <aside className='w-[350px]  h-[350px] '>
+                <aside className='w-[240px] h-[350px] '>
                     {/* category */}
                     <div className='w-full h-full bg-white shadow-sm rounded-lg'>
                         <Categories />

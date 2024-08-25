@@ -1,14 +1,13 @@
 /* eslint-disable no-param-reassign */
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
-import { ICategory } from "../../../types/Category";
-// import { IProduct } from "../../../types/types";
+import { ICategory } from "../../../interface/Category";
 
-interface IProducts {
+interface ICategories {
   categories: ICategory[] | undefined;
 }
 
-const initialState: IProducts = {
+const initialState: ICategories = {
   categories: [],
 };
 

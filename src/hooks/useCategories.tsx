@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
-import logo from "../assets/lodingIcon.png";
 import Image from "../components/shared/Image";
 import { useAppSelector } from "../redux/hooks";
 const isCategories = (category: any) => {
@@ -23,8 +22,8 @@ export const useCategories = () => {
                     <Link to={route} className="relative">
                         <span className="flex items-center  w-full">
                         {isParent  && (
-                            <div  className="w-[20px] h-[20px] flex items-center p-1">
-                                <Image src={logo} className="w-auto h-auto" />
+                            <div  className="w-[24px] h-[24px] flex items-center">
+                                {category.icon && <Image src={category.icon} className="w-full h-auto" />}
                             </div>
                         )}
                             <span className="w-full flex justify-between items-center ">

@@ -8,8 +8,21 @@ const productApi = api.injectEndpoints({
                 return product;
             },
         }),
-        
+        featuresProducts: builder.query({
+            query: () => {
+                return {
+                    url: "product/users-productvariant-list/?show_in_ecommerce=True",
+                };
+            },
+        }),
+        getProductById: builder.query({
+            query: ({id}) => {
+                return {
+                    url: `/product/users-productvariant-retrieve/${id}`,
+                };
+            },
+        })
     }),
 });
 
-export const { useGetProductsQuery } = productApi;
+export const { useGetProductsQuery, useFeaturesProductsQuery, useGetProductByIdQuery } = productApi;
