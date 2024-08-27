@@ -1,15 +1,14 @@
 import { AiFillStar } from "react-icons/ai";
-import { FaCartShopping } from "react-icons/fa6";
 import { FiStar } from "react-icons/fi";
+import { IoCartOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import image1 from "../../assets/image1.png";
 import { IProduct } from "../../interface/Product";
 import Image from "./Image";
 export default function ProductCard({ product }: { product: IProduct }) {
     // const { name, price } = props
     console.log(product)
     if(!product) return
-    const { id, name, selling_price } = product
+    const { id, name, selling_price, images } = product
     // const title =
     //     "Lorem ipsum dolor sit amet consectetur";
     // const selling_price = 4855;
@@ -19,7 +18,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
             <div>
                 <div className="h-[180px]">
                     <Image
-                        src={image1}
+                        src={images && images[0]}
                         alt="Tecgen"
                         className="scale-90 hover:scale-95 duration-300 h-full mx-auto"
                     />
@@ -53,8 +52,8 @@ export default function ProductCard({ product }: { product: IProduct }) {
                                 ৳{selling_price}
                             </p>
                         </div>
-                        <div className=" rounded-full flex items-center justify-center cursor-pointer">
-                            <FaCartShopping className="text-[#1d1d1d]" />
+                        <div className="w-8 h-8 p-1 bg-[#3e526a4f] rounded-md flex items-center justify-center cursor-pointer">
+                            <IoCartOutline className="text-[#ffffff] text-xl" />
                         </div>
                     </div>
                 </div>

@@ -18,7 +18,7 @@ export default function FeaturedCategory() {
 
     return <div>
         <div className="container ">
-            <h1 className="text-2xl py-5 font-bold ">  Featured Category</h1>
+            <h1 className="text-2xl py-5 font-bold ">  Featured Categories</h1>
             <div className="grid grid-cols-7 gap-3">
                 {categories && categories.map((category: ICategory) => <div key={category.id} className="bg-white shadow-sm hover:shadow-md duration-300 flex flex-col items-center justify-center w-full h-32 rounded-xl gap-3 group cursor-pointer">
                     {category.icon && <Image src={category.icon} alt="icon" />}

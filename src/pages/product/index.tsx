@@ -1,26 +1,27 @@
-import { AiFillStar } from "react-icons/ai";
 import { BsWatch } from "react-icons/bs";
 import { CiDeliveryTruck, CiLocationOn } from "react-icons/ci";
 import { FaCalendarDay, FaCartShopping } from "react-icons/fa6";
-import { FiMinus, FiPlus, FiStar } from "react-icons/fi";
+import { FiMinus, FiPlus } from "react-icons/fi";
 import { GiMoneyStack } from "react-icons/gi";
+import Rating from "react-rating";
 import { useParams } from "react-router-dom";
 import image from "../../assets/image1.png";
 import Button from "../../components/shared/Button";
 import Image from "../../components/shared/Image";
-import { goToTop } from "../../utility/goToTop";
 import { useGetProductByIdQuery } from "../../redux/feature/product/productSlice";
+import { goToTop } from "../../utility/goToTop";
 export default function Product() {
-    const {productId} = useParams()
+    const { productId } = useParams()
     const params = productId?.split('=')[1]
-    useGetProductByIdQuery({id:params}, {
+    const { data, isLoading } = useGetProductByIdQuery({ id: params }, {
         skip: !params
     })
+    if (!data) return
     const title = "Lorem ipsum dolor, sit amet consectetur adipisicing elit.";
     const sizes = ["S", "M", "XL", "2XL", "3XL"];
     const colors = ["#ff3a3a", "#68ff3a", "#7f3aff", "#d83aff", "#ff3a7c"];
-    
-
+    const { name, selling_price, rating } = data
+    console.log(data)
 
     goToTop()
     return (
@@ -68,23 +69,28 @@ export default function Product() {
                     </div>
                     <div className="w-5/12">
                         <h1 className="text-2xl font-medium leading-8 text-black-dim">
-                            {title}
+                            {name && name}
                         </h1>
                         <div className="flex items-center gap-2 my-3">
                             <div className="flex items-center text-yellow">
+                                <Rating readonly/>
+                                {/* <Rating initialRating={0}
+                                    emptySymbol={<FaStar className="text-slate-gray mr-1" />}
+                                    fullSymbol={<FaStar className="text-[#F2AE14] mr-1" />}
+                                    readonly/> */}
+                                {/* <AiFillStar />
                                 <AiFillStar />
                                 <AiFillStar />
                                 <AiFillStar />
-                                <AiFillStar />
-                                <FiStar />
+                                <FiStar /> */}
                             </div>
                             <p className="text-sm text-darkGray font-medium">
-                                (32 reviews)
+                                ({rating && rating} reviews)
                             </p>
                         </div>
                         <div className="flex items-center gap-2">
                             <h1 className="font-bold text-[40px] text-primary">
-                                ৳850
+                                ৳{selling_price && selling_price}
                             </h1>
                             <div>
                                 <p className="leading-none text-sm text-yellowDark font-medium">
@@ -111,8 +117,8 @@ export default function Product() {
                                     <div
                                         key={index}
                                         className={`${index === 0
-                                                ? "bg-primary text-white"
-                                                : "bg-white text-black-dim"
+                                            ? "bg-primary text-white"
+                                            : "bg-white text-black-dim"
                                             } min-w-16 h-8 flex items-center justify-center shadow-sm rounded-[4px] font-bold text-sm `}
                                     >
                                         {size}
@@ -129,8 +135,8 @@ export default function Product() {
                                             key={index}
                                             style={{ backgroundColor: color }}
                                             className={`${index === 0
-                                                    ? "border-2 border-white"
-                                                    : ""
+                                                ? "border-2 border-white"
+                                                : ""
                                                 } w-6 h-6 flex items-center justify-center shadow-md rounded-full font-bold text-sm `}
                                         ></div>
                                     );

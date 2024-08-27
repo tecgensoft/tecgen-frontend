@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getUserData } from "../../../utility/getUser";
 import {
