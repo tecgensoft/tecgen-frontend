@@ -1,6 +1,5 @@
-/* eslint-disable react/jsx-no-useless-fragment */
+
 import { ReactNode } from "react";
-import { Navigate, useLocation } from "react-router-dom";
 // import Loader from "../components/shared/Loader";
 // import { useAppSelector } from "../redux/hooks";
 

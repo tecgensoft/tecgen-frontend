@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import "./style.css";
-export default function Message({ message }) {
+export default function Message({ message }:{message:string}) {
     const [showMessage, setShowMessage] = useState(false);
 
     useEffect(() => {

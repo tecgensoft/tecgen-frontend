@@ -62,7 +62,7 @@ export default function Header() {
             <Link to="/cart">
               <div className="relative group text-[24px] duration-100   text-gray">
                 <div className="absolute left-5 -top-[8px]">
-                  <p className="flex h-4 w-4 items-center justify-center rounded-full bg-yellow text-xsm font-semibold  text-black">
+                  <p className="flex h-4 w-4 items-center justify-center rounded-full bg-primary text-xsm font-semibold  text-white">
                     {0}
                   </p>
                 </div>

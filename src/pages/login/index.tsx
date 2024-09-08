@@ -22,11 +22,11 @@ export default function Login() {
     const {error} = useAppSelector(state => state.auth)
     const dispatch = useDispatch()
     // const [error, setError] = useState('');
-    const [userInfoError, setUserInfoError] = useState<ILoginFormError>({
-        // email: null,
-        username: null,
-        password: null,
-    })
+    // const [userInfoError, setUserInfoError] = useState<ILoginFormError>({
+    //     // email: null,
+    //     username: null,
+    //     password: null,
+    // })
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
     // const [email, setEmail] = useState('');
     // const [password, setPassword] = useState('');

@@ -2,7 +2,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import Loading from "../../components/shared/Loading";
 import Message from "../../components/shared/Message";
 import RequiredSpan from "../../components/shared/RequiredSpan";
 import { userSignup } from "../../redux/feature/auth/authSlice";

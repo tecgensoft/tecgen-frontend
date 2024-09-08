@@ -25,7 +25,8 @@ const CountdownTimer: React.FC = () => {
         return () => clearTimeout(timer);
     });
 
-    const timerComponents = [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const timerComponents:any[] = [];
     Object.keys(timeLeft).forEach(interval => {
         timerComponents.push(
             <div key={interval} className="text-lg w-10 h-8 bg-gray">

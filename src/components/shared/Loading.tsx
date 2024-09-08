@@ -23,8 +23,8 @@ const Loading = ({ styles }: { styles?: string }) => {
   );
 };
 
-Loading.defaultProps = {
-  styles: "h-screen",
-};
+// Loading.defaultProps = {
+//   styles: "h-screen",
+// };
 
 export default Loading;

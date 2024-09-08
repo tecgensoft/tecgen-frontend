@@ -1,4 +1,3 @@
-import ProductCard from "../../../components/shared/ProductCard";
 import SpecialOfferProduct from "./SpecialOfferProduct";
 
 export default function SpecialProducts() {
@@ -13,14 +12,14 @@ export default function SpecialProducts() {
               <SpecialOfferProduct />
             </div>
             <div className="w-[70%] grid grid-cols-4 gap-3">
+              {/* <ProductCard />
               <ProductCard />
               <ProductCard />
               <ProductCard />
               <ProductCard />
               <ProductCard />
               <ProductCard />
-              <ProductCard />
-              <ProductCard />
+              <ProductCard /> */}
             </div>
           </div>
         </div>
