@@ -24,11 +24,45 @@ export default function Product() {
     if (!data) return;
     const sizes = ["S", "M", "XL", "2XL", "3XL"];
     const colors = ["#ff3a3a", "#68ff3a", "#7f3aff", "#d83aff", "#ff3a7c"];
-    const { id, name, selling_price, rating, images, description } = data;
-    console.log(data);
+    const { id, name, selling_price, rating, images, description, productvariant_attribute
+    } = data;
+    // console.log(data);
 
+    console.log(productvariant_attribute)
+    function groupByAttributeName(attributes: any | undefined) {
+        if (!attributes) return null;
+        const groupedData = attributes?.reduce((acc, item) => {
+            const attributeName = item?.attribute?.name;
+            if (!acc[attributeName]) {
+                acc[attributeName] = [];
+            }
+            acc[attributeName].push(item);
+            return acc;
+        }, {})
+
+        // console.log(groupedData)
+        // const groupedData = attributes?.reduce((acc: { [x: string]: any[] }, item: { attribute: { name: any } }) => {
+        //   const attributeName = item?.attribute?.name;
+
+        //   if (!acc[attributeName]) {
+        //     acc[attributeName] = [];
+        //   }
+
+        //   acc[attributeName].push(item);
+
+        //   return acc;
+        // }, {});
+        const resultArray = Object?.entries(groupedData).map(([key, value]) => ({
+          attribute_name: key,
+          items: value,
+        }));
+        console.log(resultArray)
+        return resultArray;
+    }
+    groupByAttributeName(productvariant_attribute)
+    // console.log()
     const addToCartFunc = (id, name, images) => {
-        if(id && name && selling_price){
+        if (id && name && selling_price) {
             addToCart(name, images[0], id, quantity)
         }
     }
@@ -94,15 +128,6 @@ export default function Product() {
                                         <FaStar className="text-[#F2AE14] mr-1" />
                                     }
                                 />
-                                {/* <Rating initialRating={0}
-                                    emptySymbol={<FaStar className="text-slate-gray mr-1" />}
-                                    fullSymbol={<FaStar className="text-[#F2AE14] mr-1" />}
-                                    readonly/> */}
-                                {/* <AiFillStar />
-                                <AiFillStar />
-                                <AiFillStar />
-                                <AiFillStar />
-                                <FiStar /> */}
                             </div>
                             <p className="text-sm text-darkGray font-medium">
                                 ({rating && rating} reviews)
@@ -132,11 +157,10 @@ export default function Product() {
                                 {sizes.map((size, index) => (
                                     <div
                                         key={index}
-                                        className={`${
-                                            index === 0
+                                        className={`${index === 0
                                                 ? "bg-primary text-white"
                                                 : "bg-white text-black-dim"
-                                        } min-w-16 h-8 flex items-center justify-center shadow-sm rounded-[4px] font-bold text-sm `}
+                                            } min-w-16 h-8 flex items-center justify-center shadow-sm rounded-[4px] font-bold text-sm `}
                                     >
                                         {size}
                                     </div>
@@ -151,54 +175,53 @@ export default function Product() {
                                         <div
                                             key={index}
                                             style={{ backgroundColor: color }}
-                                            className={`${
-                                                index === 0
+                                            className={`${index === 0
                                                     ? "border-2 border-white"
                                                     : ""
-                                            } w-6 h-6 flex items-center justify-center shadow-md rounded-full font-bold text-sm `}
+                                                } w-6 h-6 flex items-center justify-center shadow-md rounded-full font-bold text-sm `}
                                         ></div>
                                     );
                                 })}
                             </div>
                         </div>
                         <div className="flex items-center gap-1">
-                        <div className="flex gap-1">
-              <Button
-                type="button"
-                className={`w-30px h-30px bg-white flex items-center justify-center rounded-5px`}
-                onClick={() => {
-                    if (quantity > 1) setQuantity((prev) => prev - 1);
-                }}
-              >
-                <FiMinus />
-              </Button>
-              <span className="w-[43px] h-30px bg-white flex items-center justify-center rounded-5px text-xs font-semibold">
-                <input
-                //   disabled={is_upcoming}
-                  min={1}
-                  className="w-[43px] text-center outline-none bg-transparent disabled:opacity-40"
-                  type="number"
-                  value={quantity}
-                  onChange={(e) => {
-                    let inputValue = parseInt(e.target.value, 10);
-                    if (!isNaN(inputValue)) {
-                      inputValue = Math.max(1, inputValue);
-                      setQuantity(inputValue);
-                    } else {
-                      setQuantity(1);
-                    }
-                  }}
-                />
-              </span>
-              <Button
-                type="button"
-                className={`w-30px h-30px 
+                            <div className="flex gap-1">
+                                <Button
+                                    type="button"
+                                    className={`w-30px h-30px bg-white flex items-center justify-center rounded-5px`}
+                                    onClick={() => {
+                                        if (quantity > 1) setQuantity((prev) => prev - 1);
+                                    }}
+                                >
+                                    <FiMinus />
+                                </Button>
+                                <span className="w-[43px] h-30px bg-white flex items-center justify-center rounded-5px text-xs font-semibold">
+                                    <input
+                                        //   disabled={is_upcoming}
+                                        min={1}
+                                        className="w-[43px] text-center outline-none bg-transparent disabled:opacity-40"
+                                        type="number"
+                                        value={quantity}
+                                        onChange={(e) => {
+                                            let inputValue = parseInt(e.target.value, 10);
+                                            if (!isNaN(inputValue)) {
+                                                inputValue = Math.max(1, inputValue);
+                                                setQuantity(inputValue);
+                                            } else {
+                                                setQuantity(1);
+                                            }
+                                        }}
+                                    />
+                                </span>
+                                <Button
+                                    type="button"
+                                    className={`w-30px h-30px 
                 } bg-white flex items-center justify-center rounded-5px disabled:opacity-50 disabled:cursor-not-allowed`}
-                onClick={() => setQuantity((prev) => prev + 1)}
-              >
-                <FiPlus />
-              </Button>
-            </div>
+                                    onClick={() => setQuantity((prev) => prev + 1)}
+                                >
+                                    <FiPlus />
+                                </Button>
+                            </div>
                             {/* <span className="w-8 h-8 bg-white rounded-md flex items-center justify-center text-black-dim shadow-sm">
                                 <FiMinus />
                             </span>
@@ -211,7 +234,7 @@ export default function Product() {
                             </span> */}
                         </div>
                         <div className="flex items-center gap-1 py-3">
-                            <Button onClick={() => addToCartFunc(id, name,  images)} className="bg-primary text-white px-4 py-3  font-bold flex items-center gap-2 shadow-sm">
+                            <Button onClick={() => addToCartFunc(id, name, images)} className="bg-primary text-white px-4 py-3  font-bold flex items-center gap-2 shadow-sm">
                                 <FaCartShopping className="text-xl" />
                                 Add to cart
                             </Button>
