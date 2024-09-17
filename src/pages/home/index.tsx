@@ -6,16 +6,14 @@ import SpecialProducts from "./_components/SpecialProducts";
 import TopSellingProducts from "./_components/TopSellingProducts";
 
 export default function Home() {
-  
-
   return (
     <section>
-      <Hero/>
-      <Campaign/>      
-      <SpecialProducts/>
-      <FeaturedCategory/>
-      <TopSellingProducts/>
+      <Hero />
+      <Campaign />
+      <SpecialProducts />
+      <FeaturedCategory />
+      <TopSellingProducts />
       <FeatureProducts />
     </section>
-  )
+  );
 }
