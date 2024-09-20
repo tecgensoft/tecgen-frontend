@@ -4,13 +4,13 @@ import Footer from "../components/footer";
 import Header from "../components/header/Header";
 
 export default function Layout() {
-    return (
-        <React.Fragment>
-            <Header />
-            <main>
-                <Outlet />
-            </main>
-            <Footer/>
-        </React.Fragment>
-    );
+  return (
+    <React.Fragment>
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
+    </React.Fragment>
+  );
 }

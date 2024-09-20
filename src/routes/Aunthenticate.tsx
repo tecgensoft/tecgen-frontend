@@ -3,12 +3,12 @@ import { Navigate, useLocation } from "react-router-dom";
 import { useAppSelector } from "../redux/hooks";
 // import { useAppSelector } from "../redux/hooks";
 
-const Aunthenticate = ({ children }: { children: any }) => {
+const AuthGuard = ({ children }: { children: any }) => {
   const location = useLocation();
   const { pathname, state } = location;
   const { userInfo } = useAppSelector((state) => state.auth);
 
-console.log(userInfo)
+  console.log(userInfo);
   if (!userInfo) {
     return children;
   }
@@ -19,4 +19,4 @@ console.log(userInfo)
   return children;
 };
 
-export default Aunthenticate;
+export default AuthGuard;

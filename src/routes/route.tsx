@@ -7,8 +7,8 @@ import Home from "../pages/home";
 import Login from "../pages/login";
 import NotFound from "../pages/notFound";
 import Product from "../pages/product";
-import Signup from "../pages/signup";
-import Aunthenticate from "./Aunthenticate";
+import SignUp from "../pages/signup";
+import AuthGuard from "./Aunthenticate";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -36,17 +36,17 @@ const routes = createBrowserRouter([
       {
         path: "/auth/register",
         element: (
-          <Aunthenticate>
-            <Signup />
-          </Aunthenticate>
+          <AuthGuard>
+            <SignUp />
+          </AuthGuard>
         ),
       },
       {
         path: "/auth/login",
         element: (
-          <Aunthenticate>
+          <AuthGuard>
             <Login />
-          </Aunthenticate>
+          </AuthGuard>
         ),
       },
       {
@@ -62,10 +62,8 @@ const routes = createBrowserRouter([
           //   index: true,
           //   element: <UserProfile />,
           // },
-
         ],
       },
-
     ],
   },
 
