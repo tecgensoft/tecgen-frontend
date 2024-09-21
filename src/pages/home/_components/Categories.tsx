@@ -6,7 +6,7 @@ export default function Categories() {
   console.log("category", category);
   return (
     <div>
-      <ul className="categories ">{category}</ul>
+      <ul className="categories">{category}</ul>
     </div>
   );
 }
