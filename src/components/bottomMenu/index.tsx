@@ -1,8 +1,7 @@
-import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { menu } from "../../../data";
 
-export function BottomMenu(props) {
+export function BottomMenu() {
   const { pathname } = useLocation();
 
   const skipProductLocationForDetailsPage = pathname.split("/")[1];

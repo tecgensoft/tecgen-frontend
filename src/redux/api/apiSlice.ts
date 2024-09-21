@@ -1,48 +1,48 @@
+import { react } from "@vitejs/plugin-react-swc";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   BaseQueryApi,
   FetchArgs,
   createApi,
   fetchBaseQuery,
-} from '@reduxjs/toolkit/query/react'
-import { getUserData } from '../../utility/getUser'
-import { logout, setToken, setUserInfo } from '../feature/auth/authAction'
-import { refreshAuthToken } from '../feature/auth/authSlice'
-
+} from "@reduxjs/toolkit/query/react";
+import { getUserData } from "../../utility/getUser";
+import { logout, setToken, setUserInfo } from "../feature/auth/authAction";
+import { refreshAuthToken } from "../feature/auth/authSlice";
 
 const baseQuery = async (
   args: string | FetchArgs,
   api: BaseQueryApi,
-  extraOptions: object,
+  extraOptions: object
 ) => {
   const result = await fetchBaseQuery({
     baseUrl: import.meta.env.VITE_API_URL,
-  })(args, api, extraOptions)
+  })(args, api, extraOptions);
   if (result?.error?.status === 401) {
-    const refreshResult = await api.dispatch(refreshAuthToken()).unwrap()
+    const refreshResult = await api.dispatch(refreshAuthToken()).unwrap();
     if (refreshResult) {
       // token set in setToken
-      api.dispatch(setToken(refreshResult.access_token))
+      api.dispatch(setToken(refreshResult.access_token));
       // decode user and data store in setUserInfo
-      api.dispatch(setUserInfo(getUserData(refreshResult.access_token)))
+      api.dispatch(setUserInfo(getUserData(refreshResult.access_token)));
 
       return await fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_URL })(
         args,
         api,
-        extraOptions,
-      )
+        extraOptions
+      );
     } else {
-      api.dispatch(logout())
+      api.dispatch(logout());
     }
-  } else if (result?.error?.status === 'FETCH_ERROR') {
-    api.dispatch(logout())
+  } else if (result?.error?.status === "FETCH_ERROR") {
+    api.dispatch(logout());
   }
-  return result
-}
+  return result;
+};
 
 export const api = createApi({
-  reducerPath: 'api',
+  reducerPath: "api",
   baseQuery: baseQuery as any,
   tagTypes: [],
   endpoints: () => ({}),
-})
+});
