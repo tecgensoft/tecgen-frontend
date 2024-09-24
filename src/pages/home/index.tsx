@@ -1,3 +1,4 @@
+import ResponsiveMenu from "../../components/responsiveMenu";
 import Campaign from "./_components/Campaign";
 import FeaturedCategory from "./_components/FeaturedCategory";
 import FeatureProducts from "./_components/FeatureProducts";
@@ -8,7 +9,9 @@ import TopSellingProducts from "./_components/TopSellingProducts";
 export default function Home() {
   return (
     <section>
-      <Hero />
+      {/* <Hero /> */}
+      <ResponsiveMenu />
+
       <Campaign />
       <SpecialProducts />
       <FeaturedCategory />
