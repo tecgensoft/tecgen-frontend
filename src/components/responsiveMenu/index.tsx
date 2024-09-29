@@ -94,14 +94,14 @@ const ResponsiveSideBarMenu: React.FC = ({ isMenuOpen, toggleSidebar }) => {
       {/* Overlay */}
       {isMenuOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black bg-opacity-50"
+          className="fixed inset-0 z-40 bg-black bg-opacity-50 "
           onClick={toggleSidebar}
         />
       )}
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-64 bg-white z-50 transform text-black ${
+        className={`fixed overflow-y-scroll z-[9999999]  top-0 left-0 h-full w-64 bg-white  transform text-black ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out shadow-lg`}
       >
@@ -113,7 +113,7 @@ const ResponsiveSideBarMenu: React.FC = ({ isMenuOpen, toggleSidebar }) => {
         </div>
 
         {/* Sidebar content */}
-        <nav className=" space-y-4">
+        <nav className=" space-y-4  ">
           <ul className="space-y-2">
             {menuData.map((menu, index) => {
               const key = `menu-${index}`;

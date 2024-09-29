@@ -12,9 +12,9 @@ export function BottomMenu() {
         skipProductLocationForDetailsPage === "product-details"
           ? "hidden"
           : "fixed"
-      }  bottom-0 w-full h-[72px] bg-primary py-4 px-[22px] z-[10000] drop-shadow-2xl`}
+      }  bottom-0 w-full h-[72px] bg-primary py-4 px-[22px] z-50 drop-shadow-2xl`}
     >
-      <div className="flex justify-between">
+      <div className="flex justify-between ">
         {menu?.map((menu) => (
           <NavLink to={menu?.route} key={menu?.id}>
             <div className="relative flex flex-col justify-center items-center gap-y-2">
