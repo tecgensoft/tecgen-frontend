@@ -1,8 +1,4 @@
 {
-  "compilerOptions": {
-    "noEmit": true
-  },
-  "exclude": ["node_modules"],
   "files": [],
   "references": [
     {

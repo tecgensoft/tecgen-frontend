@@ -31,10 +31,25 @@ export default function Header() {
     }
   }, [pathname]);
 
+  // Handle body scroll locking when the menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+
+    // Cleanup the class when component unmounts or menu state changes
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [isMenuOpen]);
+
   // Toggle search bar visibility
   const toggleSearch = () => {
     setIsSearchVisible((prev) => !prev);
   };
+
   const toggleSidebar = () => {
     setIsMenuOpen((prev) => !prev);
   };
@@ -43,13 +58,13 @@ export default function Header() {
     <header>
       {/* Top bar for tablet/desktop */}
       <div className={`${isShow ? "block" : "hidden"}  bg-light`}>
-        <div className="container py-2 hidden md:block">
+        <div className="container py-2 hidden md:block ">
           <TopBar />
         </div>
       </div>
 
       {/* Main Header */}
-      <div className="bg-white shadow-md w-full z-[1000px] transform relative">
+      <div className="bg-white shadow-md w-full  transform relative z-30">
         <div className="container flex items-center md:py-3">
           {/* Logo */}
           <div className="w-3/12 hidden md:block">
@@ -136,7 +151,7 @@ export default function Header() {
       </div>
 
       {/* Mobile Bottom Navigation Menu */}
-      <div className="md:hidden fixed bottom-0 left-0 w-full bg-white shadow-lg z-50">
+      <div className="md:hidden fixed bottom-0 left-0 w-full bg-white shadow-lg z-10">
         <BottomMenu />
       </div>
     </header>

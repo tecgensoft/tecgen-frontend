@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { menuData } from "./data";
 import { FiX } from "react-icons/fi"; // Close icon
 import { GoPlus } from "react-icons/go";
 import { RiSubtractLine } from "react-icons/ri";
+import { useAppSelector } from "../../redux/hooks";
 
 // Define the structure for Menu and Submenu items
 interface Submenu {
-  title: string;
+  name: string;
   path?: string;
-  submenus?: Submenu[];
+  brand?: Submenu[];
 }
 
 const ResponsiveSideBarMenu: React.FC = ({ isMenuOpen, toggleSidebar }) => {
   const [openMenu, setOpenMenu] = useState<Record<string, boolean>>({});
+  const { categories } = useAppSelector((state) => state.category);
 
   // Function to toggle open/close for each menu or submenu
   const toggleMenu = (key: string) => {
@@ -42,7 +43,7 @@ const ResponsiveSideBarMenu: React.FC = ({ isMenuOpen, toggleSidebar }) => {
       <ul className="space-y-1">
         {submenus.map((submenu, subIndex) => {
           const key = `${parentKey}-${subIndex}`;
-          const hasSubmenus = submenu.submenus && submenu.submenus.length > 0;
+          const hasSubmenus = submenu?.brand && submenu?.brand.length > 0;
           const paddingStyle = getPaddingStyle(level); // Get padding style based on the level
 
           return (
@@ -57,7 +58,7 @@ const ResponsiveSideBarMenu: React.FC = ({ isMenuOpen, toggleSidebar }) => {
                     style={paddingStyle}
                     onClick={() => toggleMenu(key)}
                   >
-                    <span>{submenu.title}</span>
+                    <span className="ml-4">{submenu?.name}</span>
                     <span>
                       {openMenu[key] ? (
                         <RiSubtractLine className="text-2xl text-gray" />
@@ -67,7 +68,7 @@ const ResponsiveSideBarMenu: React.FC = ({ isMenuOpen, toggleSidebar }) => {
                     </span>
                   </button>
                   {openMenu[key] &&
-                    renderSubmenus(submenu.submenus!, key, level + 1)}
+                    renderSubmenus(submenu?.brand ?? [], key, level + 1)}
                 </>
               ) : (
                 <NavLink
@@ -79,7 +80,7 @@ const ResponsiveSideBarMenu: React.FC = ({ isMenuOpen, toggleSidebar }) => {
                       : `hover:bg-gray-100 px-4 py-2 w-full flex justify-between`
                   }
                 >
-                  <span>{submenu.title}</span>
+                  <span className="ml-2">{submenu?.name}</span>
                 </NavLink>
               )}
             </li>
@@ -94,14 +95,14 @@ const ResponsiveSideBarMenu: React.FC = ({ isMenuOpen, toggleSidebar }) => {
       {/* Overlay */}
       {isMenuOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black bg-opacity-50 "
+          className="fixed inset-0 z-40 bg-black bg-opacity-50  "
           onClick={toggleSidebar}
         />
       )}
 
       {/* Sidebar */}
       <div
-        className={`fixed overflow-y-scroll z-[9999999]  top-0 left-0 h-full w-64 bg-white  transform text-black ${
+        className={`fixed overflow-y-scroll z-[99]  top-0 left-0 h-full w-64 bg-white  transform text-black ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out shadow-lg`}
       >
@@ -115,9 +116,10 @@ const ResponsiveSideBarMenu: React.FC = ({ isMenuOpen, toggleSidebar }) => {
         {/* Sidebar content */}
         <nav className=" space-y-4  ">
           <ul className="space-y-2">
-            {menuData.map((menu, index) => {
+            {categories?.map((menu, index) => {
               const key = `menu-${index}`;
-              const hasSubmenus = menu.submenus && menu.submenus.length > 0;
+              const hasSubmenus =
+                menu?.sub_category && menu?.sub_category?.length > 0;
 
               return (
                 <li
@@ -129,7 +131,14 @@ const ResponsiveSideBarMenu: React.FC = ({ isMenuOpen, toggleSidebar }) => {
                     style={getPaddingStyle(0)} // Padding for the first level
                     onClick={() => toggleMenu(key)}
                   >
-                    <span>{menu.title}</span>
+                    <div className="flex gap-2">
+                      <img
+                        className="w-5 h-5"
+                        src={menu?.icon}
+                        alt={menu?.name}
+                      />
+                      <span>{menu?.name}</span>
+                    </div>
                     <span>
                       {openMenu[key] ? (
                         <RiSubtractLine className="text-2xl text-gray" />
@@ -140,7 +149,7 @@ const ResponsiveSideBarMenu: React.FC = ({ isMenuOpen, toggleSidebar }) => {
                   </button>
                   {openMenu[key] &&
                     hasSubmenus &&
-                    renderSubmenus(menu.submenus!, key, 1)}
+                    renderSubmenus(menu.sub_category!, key, 1)}
                 </li>
               );
             })}

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function TopBar() {
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between ">
       <ul className="flex items-center gap-5">
         <li>
           <Link
