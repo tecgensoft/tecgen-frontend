@@ -41,7 +41,7 @@ export default function HeroSlider() {
                   key={index}
                   src={item?.image}
                   alt="Watch 1"
-                  className="object-fit rounded-md w-full  md:h-[350px] "
+                  className="object-fit rounded-md w-full max-h-60 md:max-h-[350px]   "
                 />
               );
             }

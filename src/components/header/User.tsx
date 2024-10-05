@@ -1,33 +1,59 @@
-import { FaUser } from 'react-icons/fa'
-import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { useMouse } from '../../hooks/useMouse'
-import { logout } from '../../redux/feature/auth/authAction'
-import { userLogout } from '../../redux/feature/auth/authSlice'
-import { useAppSelector } from '../../redux/hooks'
-import Button from '../shared/Button'
-
+import { FaUser } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { useMouse } from "../../hooks/useMouse";
+import { logout } from "../../redux/feature/auth/authAction";
+// import { userLogout } from "../../redux/feature/auth/authSlice";
+import { useAppSelector } from "../../redux/hooks";
+import Button from "../shared/Button";
 
 export default function User() {
-  const { userInfo } = useAppSelector(state => state.auth)
+  const { userInfo } = useAppSelector((state) => state.auth);
   const { open, setOpen, reference } = useMouse();
-  const dispatch = useDispatch()
-  
+  const dispatch = useDispatch();
+
   const handleLogout = async () => {
-    await dispatch(userLogout())
+    // await dispatch(userLogout())
     dispatch(logout());
-  }
+  };
   return (
-    <div ref={reference} className='flex items-center gap-2 relative'>
-      <FaUser className='text-[24px] text-gray ' />
-      <div className='leading-none'>
-        <h4 className='text-black-dim leading-none font-medium'>Account</h4>
-        {!userInfo ? 
-          <span className='text-xs leading-none'>
-            <Link to={"/auth/register"} className='text-black-dim font-medium underline'>Register</Link> or <Link to={"/auth/login"} className='text-black-dim font-medium underline' >Login</Link>
-          </span> : <span className='text-xs leading-none'>
-          <Button className='text-black-dim font-medium underline' onClick={() => setOpen(!open)} >Profile</Button> or <Button className='text-black-dim font-medium underline' onClick={handleLogout} >Logout</Button>
-        </span>}
+    <div ref={reference} className="flex items-center gap-2 relative">
+      <FaUser className="text-[24px] text-gray " />
+      <div className="leading-none">
+        <h4 className="text-black-dim leading-none font-medium">Account</h4>
+        {!userInfo ? (
+          <span className="text-xs leading-none">
+            <Link
+              to={"/auth/register"}
+              className="text-black-dim font-medium underline"
+            >
+              Register
+            </Link>{" "}
+            or{" "}
+            <Link
+              to={"/auth/login"}
+              className="text-black-dim font-medium underline"
+            >
+              Login
+            </Link>
+          </span>
+        ) : (
+          <span className="text-xs leading-none">
+            <Button
+              className="text-black-dim font-medium underline"
+              onClick={() => setOpen(!open)}
+            >
+              Profile
+            </Button>{" "}
+            or{" "}
+            <Button
+              className="text-black-dim font-medium underline"
+              onClick={handleLogout}
+            >
+              Logout
+            </Button>
+          </span>
+        )}
       </div>
 
       {open && (
@@ -40,5 +66,5 @@ export default function User() {
         </div>
       )}
     </div>
-  )
+  );
 }

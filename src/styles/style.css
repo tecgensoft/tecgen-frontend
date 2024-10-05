@@ -1,0 +1,256 @@
+/* <!--------------Category Group Start-----------------> */
+.categories > ul,
+.active-categories > ul {
+  padding: 24px 0px;
+}
+.active-categories {
+  width: 248px;
+  box-shadow: -3px 5px 6px -5px #33333336;
+}
+.overview > ul > li:nth-child(1) ul {
+  left: 245px;
+}
+/* after hover show all categories & sub categories */
+.categories > ul > li:hover ul {
+  left: 245px;
+}
+.active-categories > ul > li:hover ul {
+  left: 232px;
+}
+.categories > ul > li > ul,
+.active-categories > ul > li > ul {
+  height: 584px;
+  width: 1000px;
+  padding-left: 16px;
+  position: absolute;
+  top: -58px;
+  left: -99999px;
+}
+.active-categories > ul > li > ul {
+  top: 0px;
+  height: 526px;
+  width: 1013px;
+  /* box-shadow: 5px 1px 6px -5px #3333336e; */
+}
+.categories > ul > li:hover > a::before,
+.active-categories > ul > li:hover > a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background-color: #ee485c;
+}
+.categories > ul > li > a > span,
+.active-categories > ul > li > a > span {
+  padding-left: 21px;
+  padding-right: 16px;
+}
+.categories > ul > li > ul > div {
+  border-radius: 5px;
+}
+.categories > ul > li > ul > div,
+.active-categories > ul > li > ul > div {
+  width: 100%;
+  height: 100%;
+  max-height: 584px;
+  background-color: #f3f5f6;
+  padding: 28px 36px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+  grid-gap: 5px;
+  overflow-y: scroll;
+}
+.active-categories > ul > li > ul > div {
+  box-shadow: 5px 5px 6px -5px #3333333e;
+  border-bottom-right-radius: 5px;
+}
+.categories > ul > li > ul > div > li,
+.active-categories > ul > li > ul > div > li {
+  position: relative;
+}
+.categories > ul > li > ul > div > li > a,
+.active-categories > ul > li > ul > div > li > a {
+  display: block;
+  padding-bottom: 14px;
+}
+.categories > ul > li > ul > div > li > ul > li > a,
+.active-categories > ul > li > ul > div > li > ul > li > a {
+  display: block;
+  font-size: 15px;
+  font-weight: 400;
+}
+.categories > ul > li > ul > div > li > ul > li > a:hover,
+.active-categories > ul > li > ul > div > li > ul > li > a:hover {
+  color: #ee485c;
+}
+.categories > ul > li > ul > div > li:nth-child(1)::before,
+.categories > ul > li > ul > div > li:nth-child(2)::before,
+.categories > ul > li > ul > div > li:nth-child(3)::before,
+.active-categories > ul > li > ul > div > li:nth-child(1)::before,
+.active-categories > ul > li > ul > div > li:nth-child(2)::before,
+.active-categories > ul > li > ul > div > li:nth-child(3)::before {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 400px;
+  /* left: 25%; */
+  right: 10px;
+  top: 72px;
+  background-color: #cdcdcd;
+}
+.categories > ul > li > a,
+.active-categories > ul > li > a {
+  font-weight: 600;
+  font-size: 16px;
+  height: 42px;
+  display: flex;
+}
+.categories > ul > li > ul li a,
+.active-categories > ul > li > ul li a {
+  color: #32556e;
+}
+.categories > ul > li > ul > div > li > a,
+.active-categories > ul > li > ul > div > li > a {
+  font-weight: bold;
+}
+.categories > ul > li:hover,
+.categories > ul > li > ul > li:hover > a,
+.categories > ul > li > ul > li > ul > li:hover > a,
+.active-categories > ul > li:hover,
+.active-categories > ul > li > ul > li:hover > a,
+.active-categories > ul > li > ul > li > ul > li:hover > a {
+  color: #ee485c;
+}
+.categories > ul > li:hover span img,
+.active-categories > ul > li:hover span img {
+  filter: brightness(0) saturate(100%) invert(37%) sepia(31%) saturate(5161%)
+    hue-rotate(330deg) brightness(101%) contrast(87%);
+}
+/* <!--------------Category Group END-----------------> */
+.shape {
+  min-width: 48px;
+  height: 53px;
+  background-color: #ee485c;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 85%, 0% 100%);
+}
+.prev-button {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+}
+.banner .swiper-pagination-bullet {
+  background-color: #ff5733;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+}
+.next-button {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+}
+#range-slider .range-slider__range {
+  background: #157892;
+  height: 10px;
+}
+#range-slider .range-slider__thumb {
+  background: #32556e;
+  width: 15px;
+  height: 15px;
+}
+.auth input:focus {
+  outline: none;
+  border: 1px solid #157892;
+}
+.auth input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+/* .auth input[type="number"] {
+  -moz-appearance: textfield;
+} */
+input[type="checkbox"]:checked {
+  accent-color: #157892;
+}
+.filter input[type="checkbox"] {
+  position: relative;
+  cursor: pointer;
+}
+.filter input[type="checkbox"]:before {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 14px;
+  top: -1px;
+  left: 0;
+  border: 1px solid #7e7e7e;
+  border-radius: 2px;
+  padding: 1px;
+  background-color: #e6e9eb;
+}
+.filter input[type="checkbox"]:hover:before {
+  border: 2px solid #7e7e7e;
+}
+.filter input[type="checkbox"]:checked:before {
+  background-color: #157892;
+  border: 1px solid transparent;
+}
+.filter input[type="checkbox"]:checked:after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  left: 4px;
+}
+/* loader */
+.loader {
+  /* background: transparent; */
+  border-radius: 50%;
+  color: #157892;
+}
+.loader:before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 96px;
+  height: 96px;
+  border: 2px solid transparent;
+  border-top: 2px solid #157892d9;
+  border-right: 3px solid #157892;
+  border-radius: 50%;
+  animation: animateC 1s linear infinite;
+}
+@keyframes animateC {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes animate {
+  0% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(405deg);
+  }
+}

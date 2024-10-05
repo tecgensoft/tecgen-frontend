@@ -14,8 +14,8 @@ export default function ProductCard({ product }: { product: IProduct }) {
   // const selling_price = 4855;
   // const discount_price = 4572;
   return (
-    <div className="shadow-sm border border-white-light rounded-lg bg-white max-h-[300px] min-w-48 max-w-56">
-      <div className="h-[180px]">
+    <div className="shadow-sm border border-white-light rounded-lg bg-white max-h-[350px] min-w-48 max-w-56">
+      <div className="h-[150px]">
         <Image
           src={images && images[0]}
           alt="Tecgen"
