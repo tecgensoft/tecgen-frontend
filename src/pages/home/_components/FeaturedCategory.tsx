@@ -20,12 +20,12 @@ export default function FeaturedCategory() {
     <div>
       <div className="container ">
         <h1 className="text-2xl py-5 font-bold "> Featured Categories</h1>
-        <div className="md:grid md:grid-cols-7 gap-3  ">
+        <div className="md:grid md:grid-cols-7 gap-3   ">
           {categories &&
             categories.map((category: ICategory) => (
               <div
                 key={category.id}
-                className="bg-white max-w-40 shadow-sm hover:shadow-md duration-300 flex flex-col items-center justify-center w-full h-32 rounded-xl gap-3 group cursor-pointer"
+                className="bg-white max-w-40  shadow-sm hover:shadow-md   duration-300 flex flex-col items-center justify-center w-full h-32 rounded-xl gap-3 group cursor-pointer"
               >
                 {category.icon && (
                   <Image className="max-w-16 " src={category.icon} alt="icon" />
